@@ -1,0 +1,2573 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes, viewport-fit=cover">
+  <title>انفجار آخر 💣</title>
+  <style>
+    @font-face {
+      font-family: 'CustomGameFont';
+      src: url('https://abrehamrahi.ir/o/public/oImx20Xj/') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg-start: #0f0f1a;
+      --bg-mid: #1a1a2e;
+      --bg-end: #16213e;
+      --container-bg: rgba(255, 255, 255, 0.05);
+      --container-border: rgba(255, 255, 255, 0.08);
+      --text-primary: #fff;
+      --text-secondary: #ccc;
+      --text-muted: #aaa;
+      --btn-primary-text: #1a1a2e;
+      --btn-shadow: #b85e2c;
+      --btn-shadow2: #cc8c35;
+      --input-bg: rgba(255, 255, 255, 0.1);
+      --badge-bg: linear-gradient(135deg, #2e2e42, #3e3e52);
+      --badge-active-bg: linear-gradient(135deg, #3e3540, #5e4550);
+      --modal-bg: linear-gradient(135deg, #2d2d3f, #3d3d55);
+      --settings-bg: rgba(0,0,0,0.45);
+      --slider-bg: #555;
+      --tag-bg: linear-gradient(135deg, #3a3a5a, #4a4a6a);
+      --accent-color: #ffb347;
+      --accent-glow: rgba(255,150,0,0.5);
+      --card-bg: radial-gradient(circle at 30% 30%, #ff7043, #b33c1e);
+      --card-border: #ffab91;
+      --card-shadow: 0 10px 0 #6e2c1a, 0 8px 20px rgba(0,0,0,0.5);
+      --card-shadow-active: 0 6px 0 #6e2c1a;
+      --button-bg: linear-gradient(135deg, #ff8c42, #ff6d2e);
+      --button-shadow: 0 6px 0 #b85e2c;
+      --button-text: #fff;
+      --container-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+      --title-shadow: 0 0 12px rgba(255,150,0,0.5), 0 2px 6px rgba(255,150,0,0.3);
+      --player-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    }
+
+    body.light-theme {
+      --bg-start: #ffffff;
+      --bg-mid: #f5f5f5;
+      --bg-end: #e0e0e0;
+      --container-bg: rgba(255, 255, 255, 0.9);
+      --container-border: rgba(0, 0, 0, 0.1);
+      --text-primary: #1a1a2e;
+      --text-secondary: #333;
+      --text-muted: #555;
+      --btn-primary-text: #ffffff;
+      --btn-shadow: #3a3a3a;
+      --btn-shadow2: #555;
+      --input-bg: rgba(0, 0, 0, 0.05);
+      --badge-bg: linear-gradient(135deg, #e0e0e0, #cccccc);
+      --badge-active-bg: linear-gradient(135deg, #d0e0ff, #b0c8ff);
+      --modal-bg: linear-gradient(135deg, #ffffff, #f0f0f0);
+      --settings-bg: rgba(255,255,255,0.8);
+      --slider-bg: #ccc;
+      --tag-bg: linear-gradient(135deg, #d0d0e0, #b0b0c0);
+      --accent-color: #3a6ea5;
+      --accent-glow: rgba(58,110,165,0.4);
+      --card-bg: radial-gradient(circle at 30% 30%, #5c8ec9, #2a5a8c);
+      --card-border: #8bb8e0;
+      --card-shadow: 0 0 5px rgba(0,0,0,0.1);
+      --card-shadow-active: 0 0 5px rgba(0,0,0,0.1);
+      --button-bg: linear-gradient(135deg, #4a90d9, #2a6a3a);
+      --button-shadow: 0 6px 0 #2a5a8c;
+      --button-text: #ffffff;
+      --container-shadow: 0 0 0 rgba(0,0,0,0);
+      --title-shadow: 0 0 12px rgba(58,110,165,0.5), 0 2px 6px rgba(58,110,165,0.3);
+      --player-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+
+    body {
+      font-family: 'CustomGameFont', 'Segoe UI', Tahoma, Geneva, Verdana, system-ui, sans-serif;
+      background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-mid) 50%, var(--bg-end) 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 12px;
+      margin: 0;
+      touch-action: manipulation;
+      overflow-x: hidden;
+      position: relative;
+      transition: background 0.3s ease;
+    }
+
+    body.font-fallback {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, system-ui, sans-serif !important;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 520px;
+      background: var(--container-bg);
+      backdrop-filter: blur(24px);
+      border-radius: 36px;
+      padding: 20px 16px 24px;
+      box-shadow: var(--container-shadow);
+      border: 1px solid var(--container-border);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      animation: containerEntry 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+      color: var(--text-primary);
+    }
+
+    @keyframes containerEntry {
+      from { opacity: 0; transform: translateY(30px) scale(0.95); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    h1 {
+      text-align: center;
+      color: var(--accent-color);
+      font-size: clamp(1.8rem, 7vw, 2.3rem);
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-shadow: var(--title-shadow);
+      margin-bottom: 4px;
+    }
+
+    .home-panel, .setup-panel, .game-area, .solo-panel, .three-d-setup-panel, .help-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      animation: fadeInUp 0.5s ease both;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .home-panel { gap: 20px; align-items: center; }
+    .game-area, .solo-panel, .setup-panel, .three-d-setup-panel, .help-panel { display: none; }
+
+    .mode-btn {
+      padding: 20px;
+      border-radius: 24px;
+      background: var(--button-bg);
+      color: var(--button-text);
+      font-size: 1.3rem;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      box-shadow: var(--button-shadow);
+      transition: 0.1s;
+      width: 100%;
+      text-align: center;
+      font-family: inherit;
+    }
+    .mode-btn:active { transform: translateY(4px); box-shadow: 0 2px 0 var(--btn-shadow); }
+
+    .add-player-row { display: flex; align-items: center; gap: 10px; }
+    .add-player-row input {
+      flex: 1; padding: 12px 14px; border: none; border-radius: 20px;
+      background: var(--input-bg); color: var(--text-primary); font-size: 0.95rem;
+      outline: none; border: 1px solid rgba(128,128,128,0.3);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); max-width: 70%;
+      font-family: inherit;
+    }
+    .add-player-row input:focus { border-color: var(--accent-color); background: rgba(255,255,255,0.16); box-shadow: 0 0 20px var(--accent-glow); }
+    .add-player-row input::placeholder { color: var(--text-muted); }
+
+    .btn-round, .btn {
+      position: relative; transition: all 0.1s ease; transform: translateY(0);
+      box-shadow: var(--button-shadow); background: var(--button-bg); color: var(--button-text);
+    }
+    .btn-round:active, .btn:active { transform: translateY(4px); box-shadow: 0 2px 0 var(--btn-shadow); }
+    .btn-round {
+      width: 50px; height: 50px; border-radius: 50%; border: none; font-size: 1.6rem;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      touch-action: manipulation; flex-shrink: 0;
+    }
+    .btn {
+      padding: 12px 20px; border: none; border-radius: 50px; font-weight: bold; font-size: 1rem;
+      cursor: pointer; display: inline-flex; align-items: center; justify-content: center;
+      gap: 6px; touch-action: manipulation; white-space: nowrap;
+      border: 1px solid rgba(255, 255, 255, 0.3); font-family: inherit;
+    }
+    .btn:disabled { opacity: 0.5; transform: none; box-shadow: 0 4px 0 #7f4f3b; pointer-events: none; filter: grayscale(30%); }
+    .btn.primary {
+      background: linear-gradient(135deg, var(--accent-color), #ff9500);
+      color: var(--btn-primary-text); font-size: 1.1rem; padding: 14px 28px;
+      box-shadow: 0 6px 0 var(--btn-shadow2); align-self: center; width: fit-content;
+    }
+
+    .players-list-setup, .robot-list-setup {
+      display: flex; flex-wrap: wrap; gap: 8px; background: rgba(0,0,0,0.3);
+      border-radius: 20px; padding: 12px; min-height: 44px; align-items: center;
+      border: 1px dashed rgba(255,255,255,0.1);
+    }
+
+    .player-tag {
+      background: var(--tag-bg); color: #fff; padding: 8px 14px; border-radius: 30px;
+      font-size: 0.9rem; display: flex; align-items: center; gap: 6px;
+      box-shadow: var(--player-shadow);
+    }
+    .player-tag button { background: none; border: none; color: #ff8888; font-size: 1.2rem; cursor: pointer; padding: 0 4px; }
+
+    .players-bar {
+      display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+      background: rgba(0,0,0,0.35); border-radius: 30px; padding: 12px 10px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .player-badge {
+      background: var(--badge-bg); padding: 8px 16px; border-radius: 40px; font-weight: 600;
+      display: flex; align-items: center; gap: 8px; color: var(--text-primary);
+      border: 2px solid transparent; font-size: 0.9rem;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .player-badge.active-turn {
+      border-color: var(--accent-color); background: var(--badge-active-bg);
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
+    .player-badge.eliminated {
+      text-decoration: line-through; opacity: 0.6; color: #999;
+      background: linear-gradient(135deg, #2a1a1f, #3a1a1f); filter: grayscale(30%);
+    }
+
+    .mines-grid { position: relative; width: 100%; height: 380px; margin: 10px 0; }
+
+    .mine-card {
+      width: 70px; height: 70px; border-radius: 24px;
+      background: var(--card-bg); display: flex; align-items: center; justify-content: center;
+      font-size: 2.4rem; border: 2px solid var(--card-border); box-shadow: var(--card-shadow);
+      transition: transform 0.15s; cursor: pointer; user-select: none; touch-action: manipulation;
+      position: absolute; transform: translate(-50%, -50%);
+    }
+    .animations-enabled .mine-card { animation: mineAppear 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+    @keyframes mineAppear {
+      from { opacity: 0; transform: translate(-50%, -50%) scale(0) rotate(180deg); }
+      to { opacity: 1; transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+    }
+    .mine-card:active { transform: translate(-50%, -50%) scale(0.95) translateY(3px); box-shadow: var(--card-shadow-active); }
+
+    .mine-card.click-beat {
+      animation: heartbeat 0.2s ease-out !important;
+      pointer-events: none;
+    }
+    @keyframes heartbeat {
+      0% { transform: translate(-50%, -50%) scale(1); }
+      25% { transform: translate(-50%, -50%) scale(1.2); }
+      50% { transform: translate(-50%, -50%) scale(0.9); }
+      75% { transform: translate(-50%, -50%) scale(1.1); }
+      100% { transform: translate(-50%, -50%) scale(1); }
+    }
+
+    .mine-card.disarmed {
+      background: radial-gradient(circle at 30% 30%, #66bb6a, #2e7d32);
+      border-color: #a5d6a7;
+      box-shadow: 0 6px 0 #1b5e20, 0 4px 15px rgba(100, 200, 100, 0.5);
+      pointer-events: none;
+      transform: translate(-50%, -50%) scale(0.9);
+    }
+    .animations-enabled .mine-card.disarmed { animation: disarmPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+    @keyframes disarmPop {
+      0% { transform: translate(-50%, -50%) scale(1); }
+      40% { transform: translate(-50%, -50%) scale(1.2); }
+      100% { transform: translate(-50%, -50%) scale(0.9); }
+    }
+    .mine-card.exploded {
+      background: radial-gradient(circle at 30% 30%, #ff1744, #880e4f);
+      border-color: #ff616f;
+      box-shadow: 0 0 40px #ff0000aa, 0 0 80px #ff000044, 0 4px 0 #4a0024;
+      pointer-events: none;
+    }
+    .animations-enabled .mine-card.exploded { animation: explodeShake 0.6s cubic-bezier(0.36, 0.07, 0.19, 0.97) forwards; }
+    @keyframes explodeShake {
+      0% { transform: translate(-50%, -50%) scale(1); }
+      10% { transform: translate(-50%, -50%) scale(1.3) rotate(10deg); }
+      20% { transform: translate(-50%, -50%) scale(0.9) rotate(-10deg); }
+      30% { transform: translate(-50%, -50%) scale(1.15) rotate(5deg); }
+      40% { transform: translate(-50%, -50%) scale(0.95) rotate(-5deg); }
+      50% { transform: translate(-50%, -50%) scale(1.05) rotate(3deg); }
+      100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+    }
+
+    .layout-small-cards .mine-card.compact {
+      width: 50px !important; height: 50px !important; font-size: 1.6rem !important;
+    }
+
+    .status-bar {
+      display: flex; justify-content: space-between; align-items: center;
+      background: var(--settings-bg); border-radius: 24px; padding: 10px 18px;
+      color: var(--text-secondary); font-weight: 500; font-size: 0.95rem;
+      backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .modal-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 100; visibility: hidden; opacity: 0;
+      transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+    }
+    .modal-overlay.active { visibility: visible; opacity: 1; }
+    .modal-box {
+      background: var(--modal-bg); border-radius: 36px; padding: 28px 20px;
+      text-align: center; width: 85%; max-width: 380px;
+      color: var(--text-primary); box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+      border: 1px solid var(--container-border);
+      display: flex; flex-direction: column; gap: 20px;
+      font-size: 1.2rem; transform: scale(0.8);
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+      position: relative; font-family: inherit;
+    }
+    .modal-overlay.active .modal-box { transform: scale(1); }
+    .modal-close-btn {
+      position: absolute; top: 10px; right: 15px;
+      background: none; border: none; color: var(--text-primary);
+      font-size: 1.6rem; cursor: pointer; opacity: 0.7; z-index: 5;
+    }
+
+    .floating-settings-btn {
+      position: fixed; top: 20px; right: 20px;
+      display: flex; align-items: center; gap: 8px;
+      background: var(--button-bg); color: var(--button-text);
+      border: none; cursor: pointer; z-index: 90;
+      border-radius: 30px; padding: 8px 16px;
+      font-size: 1rem; font-weight: bold;
+      box-shadow: var(--button-shadow);
+      touch-action: manipulation; transition: 0.1s;
+      font-family: inherit;
+    }
+    .floating-settings-btn:active { transform: translateY(4px); box-shadow: 0 2px 0 var(--btn-shadow); }
+
+    .switch { position: relative; display: inline-block; width: 48px; height: 26px; }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .slider {
+      position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+      background-color: var(--slider-bg); transition: 0.3s; border-radius: 26px;
+    }
+    .slider:before {
+      position: absolute; content: ""; height: 20px; width: 20px;
+      left: 3px; bottom: 3px; background-color: white; transition: 0.3s; border-radius: 50%;
+    }
+    input:checked + .slider { background-color: var(--accent-color); }
+    input:checked + .slider:before { transform: translateX(22px); }
+
+    .restart-btn {
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25);
+      color: var(--text-primary); padding: 10px 18px; border-radius: 30px;
+      font-size: 0.9rem; cursor: pointer; align-self: center; transition: all 0.3s ease;
+    }
+
+    .particles-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 200; }
+    .particle { position: absolute; font-size: 1.5rem; animation: particleFly 1s ease-out forwards; }
+    @keyframes particleFly {
+      0% { opacity: 1; transform: translate(0,0) scale(1) rotate(0deg); }
+      100% { opacity: 0; transform: translate(var(--tx),var(--ty)) scale(0) rotate(var(--rot)); }
+    }
+
+    body.animations-disabled .mine-card,
+    body.animations-disabled .player-badge,
+    body.animations-disabled .player-tag,
+    body.animations-disabled h1,
+    body.animations-disabled .container,
+    body.animations-disabled .setup-panel,
+    body.animations-disabled .game-area,
+    body.animations-disabled .btn-round,
+    body.animations-disabled .btn,
+    body.animations-disabled .floating-settings-btn,
+    body.animations-disabled .modal-box,
+    body.animations-disabled .particle { animation: none !important; }
+    body.animations-disabled .btn-round:active,
+    body.animations-disabled .btn:active { transform: none; box-shadow: var(--button-shadow); }
+    body.animations-disabled .mine-card:active { transform: translate(-50%, -50%) scale(1); box-shadow: var(--card-shadow); }
+    body.animations-disabled .floating-settings-btn:active { transform: none; box-shadow: var(--button-shadow); }
+
+    .trophy-emoji { font-size: 4rem; display: block; margin-bottom: 10px; }
+
+    select, .music-select {
+      width: 100%; padding: 8px 10px; border-radius: 15px;
+      background: var(--input-bg); color: var(--text-primary);
+      border: 1px solid rgba(128,128,128,0.3); font-size: 0.9rem;
+      margin-top: 4px; font-family: inherit;
+    }
+    .music-select:disabled { opacity: 0.4; pointer-events: none; }
+    .setting-hint { font-size: 0.7rem; color: var(--text-muted); margin-top: 4px; }
+
+    .settings-section {
+      margin-bottom: 12px; border-bottom: 1px solid rgba(128,128,128,0.2); padding-bottom: 8px;
+    }
+    .settings-section h4 {
+      font-size: 1rem; margin-bottom: 8px; color: var(--accent-color);
+      display: flex; align-items: center; gap: 6px;
+    }
+
+    .counter-row { display: flex; align-items: center; gap: 12px; justify-content: center; }
+    .counter-row button {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--button-bg); color: var(--button-text);
+      border: none; font-size: 1.6rem; cursor: pointer;
+      box-shadow: var(--button-shadow); touch-action: manipulation; font-family: inherit;
+    }
+    .counter-row input {
+      width: 70px; text-align: center; padding: 10px;
+      border-radius: 20px; background: var(--input-bg); color: var(--text-primary);
+      border: 1px solid rgba(128,128,128,0.3); font-size: 1.2rem; font-family: inherit;
+    }
+
+    .error-message {
+      color: #ff4444;
+      font-size: 0.8rem;
+      text-align: center;
+      display: none;
+    }
+
+    .spin-btn {
+      position: fixed; bottom: 20px; right: 20px;
+      width: 50px; height: 50px; border-radius: 50%;
+      background: var(--button-bg); color: var(--button-text);
+      font-size: 1.6rem; border: none; cursor: pointer;
+      box-shadow: var(--button-shadow); z-index: 80; transition: 0.3s;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* 3D Canvas */
+    #threeDCanvasContainer {
+      width: 100%;
+      height: 380px;
+      border-radius: 24px;
+      overflow: hidden;
+      background: rgba(0,0,0,0.2);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .joystick-container {
+      position: absolute;
+      bottom: 30px;
+      left: 30px;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      border: 2px solid rgba(255,255,255,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+    .joystick-knob {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.4);
+      border: 2px solid rgba(255,255,255,0.6);
+    }
+
+    .fullscreen-toggle-btn {
+      position: absolute;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      border: 2px solid rgba(255,255,255,0.3);
+      color: #fff;
+      font-size: 1.4rem;
+      cursor: pointer;
+      z-index: 10;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    /* theme-toggle-btn حذف شده: گزینه تغییر تم درون بازی دیگر در دسترس نیست */
+    .theme-toggle-btn {
+      display: none !important;
+    }
+
+    /* Toast notifications */
+    #toastContainer {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      pointer-events: none;
+    }
+    .toast-item {
+      background: rgba(0,0,0,0.8);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 40px;
+      font-size: 1rem;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+      animation: toastIn 0.4s ease-out;
+      white-space: nowrap;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    }
+    @keyframes toastIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Fullscreen */
+    body.game-fullscreen {
+      padding: 0 !important;
+    }
+    body.game-fullscreen .container {
+      max-width: 100vw !important;
+      border-radius: 0 !important;
+      background: transparent !important;
+      backdrop-filter: none !important;
+      box-shadow: none !important;
+      border: none !important;
+      padding: 0 !important;
+    }
+    body.game-fullscreen h1,
+    body.game-fullscreen .home-panel,
+    body.game-fullscreen .setup-panel,
+    body.game-fullscreen .solo-panel,
+    body.game-fullscreen .three-d-setup-panel,
+    body.game-fullscreen .help-panel {
+      display: none !important;
+    }
+    body.game-fullscreen .game-area {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 50;
+      background: #000;
+    }
+    body.game-fullscreen #threeDCanvasContainer {
+      height: calc(100vh - 120px) !important;
+      border-radius: 0 !important;
+    }
+    body.game-fullscreen .players-bar,
+    body.game-fullscreen .status-bar,
+    body.game-fullscreen .restart-btn {
+      display: none !important;
+    }
+    body.game-fullscreen .joystick-container {
+      display: block !important;
+    }
+    body.game-fullscreen .fullscreen-toggle-btn {
+      display: flex !important;
+    }
+    body.game-fullscreen .theme-toggle-btn {
+      display: none !important;
+    }
+
+    .help-section {
+      display: none;
+      background: rgba(0,0,0,0.2);
+      border-radius: 24px;
+      padding: 20px;
+      line-height: 1.8;
+      max-height: 60vh;
+      overflow-y: auto;
+    }
+    .help-section.active { display: block; }
+    .help-nav-btn {
+      width: 100%;
+      margin-bottom: 8px;
+    }
+
+    /* ========== استایل‌های جدید: پنل Performance Mode ========== */
+    .perf-mode-indicator {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      margin-right: 8px;
+      background: #4caf50;
+      color: #fff;
+    }
+    .perf-mode-indicator.active {
+      background: #ff9800;
+    }
+    .setting-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 6px 0;
+      gap: 10px;
+    }
+    .setting-label {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      flex-shrink: 0;
+    }
+
+    @media (min-width: 768px) {
+      .container { max-width: 700px; }
+      .mines-grid { height: 500px; }
+      .mine-card { width: 85px; height: 85px; font-size: 2.8rem; }
+      .layout-small-cards .mine-card.compact { width: 60px !important; height: 60px !important; font-size: 2rem !important; }
+      #threeDCanvasContainer { height: 500px; }
+    }
+  </style>
+</head>
+<body class="animations-enabled">
+  <div class="container" id="mainContainer">
+    <h1>💣 انفجار آخر</h1>
+
+    <div id="homePanel" class="home-panel">
+      <button class="mode-btn" id="groupModeBtn">👥 بازی با دوستان</button>
+      <button class="mode-btn" id="soloModeBtn">🧑 بازی انفرادی (در حال توسعه)</button>
+      <button class="mode-btn" id="threeDModeBtn">🎮 بازی سه‌بعدی (آزمایشی)</button>
+      <button class="mode-btn" id="helpModeBtn">📖 راهنما</button>
+    </div>
+
+    <div id="setupPanel" class="setup-panel">
+      <div class="add-player-row">
+        <input type="text" id="playerNameInput" placeholder="نام بازیکن..." autocomplete="off">
+        <button class="btn-round" id="addPlayerBtn">➕</button>
+      </div>
+      <div id="setupPlayerList" class="players-list-setup"></div>
+      <div class="counter-row">
+        <button id="robotMinusBtn">➖</button>
+        <span style="color:var(--text-primary);">ربات‌ها:</span>
+        <input type="number" id="robotCountInput" value="0" min="0" max="19">
+        <button id="robotPlusBtn">➕</button>
+      </div>
+      <p id="groupError" class="error-message">حداکثر مجموع ۲۰ بازیکن (واقعی + ربات) مجاز است.</p>
+      <div id="robotListSetup" class="robot-list-setup"></div>
+      <button class="btn primary" id="startGroupGameBtn" disabled>🚀 شروع بازی</button>
+      <button class="btn" id="backToHomeFromGroup">🏠 بازگشت</button>
+    </div>
+
+    <div id="soloSetupPanel" class="solo-panel">
+      <div style="text-align:center; font-size:1.2rem;">🏆 بالاترین رکورد: <span id="highScoreDisplay">0</span></div>
+      <div class="counter-row">
+        <button id="minesMinusBtn">➖</button>
+        <input type="number" id="minesCountInput" value="3" min="2" max="15">
+        <button id="minesPlusBtn">➕</button>
+      </div>
+      <p id="soloError" class="error-message">حداکثر ۱۵ بمب می‌توانید انتخاب کنید.</p>
+      <button class="btn primary" id="startSoloGameBtn">🚀 شروع</button>
+      <button class="btn" id="backToHomeFromSolo">🏠 بازگشت</button>
+    </div>
+
+    <div id="threeDSetupPanel" class="three-d-setup-panel">
+      <div class="add-player-row">
+        <input type="text" id="threeDPlayerNameInput" placeholder="نام بازیکن..." autocomplete="off">
+        <button class="btn-round" id="threeDAddPlayerBtn">➕</button>
+      </div>
+      <div id="threeDSetupPlayerList" class="players-list-setup"></div>
+      <div class="counter-row">
+        <button id="threeDRobotMinusBtn">➖</button>
+        <span style="color:var(--text-primary);">ربات‌ها:</span>
+        <input type="number" id="threeDRobotCountInput" value="0" min="0" max="19">
+        <button id="threeDRobotPlusBtn">➕</button>
+      </div>
+      <p id="threeDGroupError" class="error-message">حداکثر مجموع ۲۰ بازیکن (واقعی + ربات) مجاز است.</p>
+      <div id="threeDRobotListSetup" class="robot-list-setup"></div>
+      <button class="btn primary" id="startThreeDGameBtn" disabled>🚀 شروع بازی سه‌بعدی</button>
+      <button class="btn" id="backToHomeFromThreeD">🏠 بازگشت</button>
+    </div>
+
+    <div id="helpPanel" class="help-panel">
+      <button class="btn help-nav-btn" data-help="intro">معرفی بازی</button>
+      <button class="btn help-nav-btn" data-help="theory">تئوری بازی</button>
+      <button class="btn help-nav-btn" data-help="group">راهنمای گروهی</button>
+      <button class="btn help-nav-btn" data-help="solo">راهنمای انفرادی</button>
+      <button class="btn help-nav-btn" data-help="threeD">راهنمای سه‌بعدی</button>
+      <button class="btn" id="backToHomeFromHelp">🏠 بازگشت</button>
+
+      <div class="help-section" id="help-intro">
+        <h3>💣 معرفی بازی انفجار آخر</h3>
+        <p>بازی «انفجار آخر» یک بازی مهمانی هیجان‌انگیز است که در آن بازیکنان به نوبت یکی از بمب‌های روی صحنه را انتخاب می‌کنند. یکی از بمب‌ها واقعی است و با انتخاب آن بازیکن منفجر شده و از بازی خارج می‌شود. آخرین بازیکنی که زنده بماند برنده است.</p>
+        <p>این بازی به سه حالت گروهی، انفرادی و سه‌بعدی (آزمایشی) قابل اجراست. حالت سه‌بعدی یک تجربهٔ فراگیر با گرافیک محیطی و کنترل جوی‌استیک ارائه می‌دهد.</p>
+      </div>
+      <div class="help-section" id="help-theory">
+        <h3>🧠 تئوری بازی</h3>
+        <p>بازی بر پایهٔ احتمال و مدیریت ریسک طراحی شده است. در هر دور یک بمب از میان تعدادی بمب واقعی است. هرچه بازی جلوتر می‌رود و بمب‌ها خنثی می‌شوند، احتمال برخورد با بمب واقعی افزایش می‌یابد.</p>
+      </div>
+      <div class="help-section" id="help-group">
+        <h3>👥 راهنمای بازی گروهی</h3>
+        <p>۱. نام بازیکنان واقعی را وارد کنید (حداقل یک نفر).</p>
+        <p>۲. تعداد ربات‌ها را مشخص کنید (از ۰ تا ۱۹).</p>
+        <p>۳. دکمه شروع را بزنید. بازی با چیدمان دایره‌ای بمب‌ها آغاز می‌شود.</p>
+        <p>۴. هر بازیکن در نوبت خود روی یک بمب کلیک می‌کند. اگر بمب واقعی نباشد، بازی ادامه می‌یابد.</p>
+        <p>۵. آخرین بازیکن باقی‌مانده برنده است.</p>
+      </div>
+      <div class="help-section" id="help-solo">
+        <h3>🧑 راهنمای بازی انفرادی</h3>
+        <p>۱. تعداد بمب‌ها را بین ۲ تا ۱۵ تنظیم کنید.</p>
+        <p>۲. بازی را شروع کنید. هدف خنثی‌کردن تمام بمب‌های بی‌خطر است تا فقط بمب واقعی باقی بماند.</p>
+        <p>۳. رکورد بیشترین دور متوالی ذخیره می‌شود.</p>
+      </div>
+      <div class="help-section" id="help-threeD">
+        <h3>🎮 راهنمای بازی سه‌بعدی</h3>
+        <p>۱. بازیکنان و ربات‌ها را اضافه کنید.</p>
+        <p>۲. بازی در حالت تمام‌صفحه شروع می‌شود. از جوی‌استیک برای حرکت استفاده کنید.</p>
+        <p>۳. نزدیک بمب بمانید تا شمارش معکوس تمام شود.</p>
+        <p>۴. نام بازیکنان بالای سر کاراکترها نمایش داده می‌شود. بازیکنان حذف‌شده ناپدید می‌شوند.</p>
+        <p>۵. دکمه خروج از تمام‌صفحه در پایین سمت راست قرار دارد. (تغییر تم درون بازی حذف شده است)</p>
+        <p>۶. اعلان‌ها به صورت نوتیفیکیشن بالای صفحه نمایش داده می‌شوند.</p>
+      </div>
+    </div>
+
+    <div id="gamePanel" class="game-area">
+      <div id="playersBar" class="players-bar"></div>
+      <div id="minesContainer" class="mines-grid"></div>
+      <div id="threeDCanvasContainer" style="display:none;"></div>
+      <div id="joystickContainer" class="joystick-container" style="display:none;">
+        <div id="joystickKnob" class="joystick-knob"></div>
+      </div>
+      <div class="status-bar">
+        <span id="turnIndicator">👈 نوبت: ---</span>
+        <span id="minesCount">💣 مین: 0</span>
+      </div>
+      <button class="restart-btn" id="restartGameBtn">🔄 شروع بازی جدید</button>
+    </div>
+  </div>
+
+  <button class="floating-settings-btn" id="floatingSettingsBtn">⚙️ تنظیمات</button>
+  <button class="spin-btn" id="spinFutureBtn" style="display:none;">🌀</button>
+  <button class="fullscreen-toggle-btn" id="fullscreenToggleBtn" title="بزرگ‌نمایی / خروج">⛶</button>
+  <!-- theme-toggle-btn حذف شد: گزینه تغییر تم درون بازی دیگر در دسترس نیست -->
+  <!-- <button class="theme-toggle-btn" id="themeToggleBtn" title="تغییر روز/شب">☀️</button> -->
+
+  <div id="modalOverlay" class="modal-overlay">
+    <div class="modal-box">
+      <button class="modal-close-btn" id="modalCloseBtn" style="display:none;">✕</button>
+      <div id="modalMessage"></div>
+      <div class="modal-buttons" id="modalButtons"></div>
+    </div>
+  </div>
+
+  <div id="settingsOverlay" class="modal-overlay">
+    <div class="modal-box" style="text-align:right;">
+      <button class="modal-close-btn" id="settingsCloseBtn">✕</button>
+      <h3 style="text-align:center; margin-bottom:10px;">⚙️ تنظیمات</h3>
+      <div class="settings-section">
+        <h4>🔊 صوت</h4>
+        <div class="setting-row"><span class="setting-label">🎵 موزیک پس‌زمینه</span><label class="switch"><input type="checkbox" id="toggleMusic" checked><span class="slider"></span></label></div>
+        <div><span style="font-size:0.9rem;">🎼 انتخاب موزیک:</span>
+          <select id="musicSelect" class="music-select">
+            <option value="1" selected>موزیک ۲ - ریتمیک</option>
+            <option value="2">موزیک ۳ - حماسی</option>
+            <option value="custom">موزیک دلخواه (آفلاین)</option>
+          </select>
+          <button class="btn" id="customMusicBtn" style="display:none; margin-top:8px; font-size:0.85rem;">📁 انتخاب فایل</button>
+          <span id="customMusicName" style="font-size:0.8rem; color:var(--text-muted); display:block; margin-top:4px;"></span>
+          <p class="setting-hint" id="musicHint">موزیک پس زمینه نیازمند اینترنت است</p>
+        </div>
+        <div class="setting-row"><span class="setting-label">🔊 افکت صوتی</span><label class="switch"><input type="checkbox" id="toggleSound" checked><span class="slider"></span></label></div>
+      </div>
+      <div class="settings-section" id="settingsVisualSection">
+        <h4>🖼️ تصویر</h4>
+        <div class="setting-row"><span class="setting-label">🌗 تم</span><select id="themeSelect" class="music-select" style="width:auto;"><option value="dark">تاریک</option><option value="light">روشن</option></select></div>
+        <div class="setting-row" style="margin-top:10px;" id="emojiSetRow"><span class="setting-label">🎭 ست ایموجی‌ها</span>
+          <select id="emojiSetSelect" class="music-select" style="width:auto;">
+            <option value="bomb">💣 بمب</option>
+            <option value="emoji">🙂 ایموجی</option>
+            <option value="logo">🔲 لوگو</option>
+            <option value="weather">☁️ آب و هوا</option>
+            <option value="heart">❤️ قلب</option>
+            <option value="astronomy">⭐️ نجومی</option>
+            <option value="flag1">🏳 پرچم ۱</option>
+            <option value="flag2">🏳 پرچم ۲</option>
+            <option value="food">🍽 خوراکی</option>
+          </select>
+        </div>
+        <div class="setting-row" style="margin-top:10px;" id="layoutModeRow"><span class="setting-label">📐 چیدمان بمب‌های زیاد</span><select id="layoutModeSelect" class="music-select" style="width:auto;"><option value="inner_ring">حلقه درونی</option><option value="small_cards">کارت کوچک</option></select></div>
+      </div>
+      <div class="settings-section">
+        <h4>⚡ بیشتر</h4>
+        <div class="setting-row"><span class="setting-label">🎬 انیمیشن‌ها</span><label class="switch"><input type="checkbox" id="toggleAnimations" checked><span class="slider"></span></label></div>
+        <div class="setting-row"><span class="setting-label">📳 لرزش</span><label class="switch"><input type="checkbox" id="toggleVibration" checked><span class="slider"></span></label></div>
+      </div>
+      <!-- ========== تنظیمات جدید: حالت اجرای روان (Performance Mode) ========== -->
+      <div class="settings-section" id="settingsPerformanceSection">
+        <h4>🚀 کارایی</h4>
+        <div class="setting-row">
+          <span class="setting-label">⚡ حالت اجرای روان</span>
+          <span id="perfModeBadge" class="perf-mode-indicator" style="display:none;">فعال</span>
+          <label class="switch"><input type="checkbox" id="togglePerformanceMode"><span class="slider"></span></label>
+        </div>
+        <p class="setting-hint" id="perfModeHint">با فعال‌سازی، افکت‌ها و انیمیشن‌های غیرضروری کاهش می‌یابند تا بازی روان‌تر اجرا شود.</p>
+      </div>
+      <div style="display:flex; gap:10px; justify-content:center; margin-top:15px;">
+        <button class="btn" id="settingsCancelBtn">انصراف</button>
+        <button class="btn primary" id="settingsSaveBtn">💾 ذخیره</button>
+      </div>
+    </div>
+  </div>
+
+  <input type="file" id="customMusicInput" accept="audio/*" style="display:none;">
+  <div id="particlesContainer" class="particles-container"></div>
+  <div id="toastContainer"></div>
+
+  <script type="importmap">
+    { "imports": { "three": "https://unpkg.com/three@0.157.0/build/three.module.js" } }
+  </script>
+
+  <script>
+    // =====================================================================
+    //   اسکریپت اصلی (حالت‌های ۲بعدی) – کامل و بدون تغییر
+    // =====================================================================
+    (function() {
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(() => {
+          if (!Array.from(document.fonts).some(f => f.family === 'CustomGameFont' && f.status === 'loaded')) document.body.classList.add('font-fallback');
+        });
+        setTimeout(() => { if (!Array.from(document.fonts).some(f => f.family === 'CustomGameFont' && f.status === 'loaded')) document.body.classList.add('font-fallback'); }, 20000);
+      } else document.body.classList.add('font-fallback');
+
+      const EMOJI_SETS = {
+        bomb: { before: '💣', disarmed: '🎉', exploded: '💥', particles: ['💥','🔥','✨','💢','💫','⚡','🌟','💣'] },
+        emoji: { before: '😶', disarmed: '🥳', exploded: '🤯', particles: ['😱','😵','💫','😨','🤯','😰','😥','😓'] },
+        logo: { before: '🔲', disarmed: '✅', exploded: '💢', particles: ['🔹','🔸','🔺','🔻','🟠','🟡','🟢','🔵'] },
+        weather: { before: '☁️', disarmed: '⛅️', exploded: '🌩', particles: ['☁️','⛅️','🌩️','🌧️','🌨️','❄️','💧','🌈'] },
+        heart: { before: '🤍', disarmed: '❤️', exploded: '❤️‍🔥', particles: ['❤️','💔','💕','💖','💗','💘','💝','💞'] },
+        astronomy: { before: '⭐️', disarmed: '🌠', exploded: '☄️', particles: ['⭐️','🌟','💫','☄️','🌠','✨','🌌','🪐'] },
+        flag1: { before: '🏳', disarmed: '🏴', exploded: '🚩', particles: ['🏳','🏴','🚩','🏁','🎌','🏳️‍🌈','🇺🇳'] },
+        flag2: { before: '🏳', disarmed: ['🇮🇷','🇮🇶','🇾🇪','🇵🇸'], exploded: ['🇺🇸','🇮🇱','🇸🇦','🇦🇪'], particles: ['🇮🇷','🇮🇶','🇾🇪','🇵🇸','🇺🇸','🇮🇱','🇸🇦','🇦🇪'] },
+        food: { before: '🍽', disarmed: '🍏', exploded: '🌶', particles: ['🍎','🍔','🍕','🍩','🌮','🍿','🍪','🍦'] }
+      };
+
+      const SETTINGS_KEY = 'mine_game_settings';
+      const MUSIC_URLS = [
+        'https://bkalam.ir/wp-content/uploads/2025/06/Rhythmic-Instrumental-music-for-weightlifting-and-arm-station.mp3',
+        'https://bkalam.ir/wp-content/uploads/2025/06/Epic-Instrumental-Music-for-branding-teaser.mp3'
+      ];
+
+      let settings = {
+        animations: true, vibration: true, sound: true,
+        music: true, musicType: 'preset', musicIndex: 1,
+        theme: 'dark', emojiSet: 'bomb', layoutMode: 'inner_ring',
+        performanceMode: false
+      };
+
+      window._settings = settings;
+      let bgMusic = null, customAudioURL = null;
+      const $ = (s) => document.getElementById(s);
+      let previousPresetIndex = 1;
+      let currentGameMode = 'home';
+
+      function getEmojiSet() { return EMOJI_SETS[settings.emojiSet] || EMOJI_SETS.bomb; }
+      function getRandomEmoji(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+      // بارگذاری تنظیمات از localStorage
+      function loadSettings() {
+        try {
+          const saved = localStorage.getItem(SETTINGS_KEY);
+          if (saved) {
+            const parsed = JSON.parse(saved);
+            settings.animations = parsed.animations ?? true;
+            settings.vibration = parsed.vibration ?? true;
+            settings.sound = parsed.sound ?? true;
+            settings.music = parsed.music ?? true;
+            settings.musicType = parsed.musicType === 'custom' ? 'preset' : (parsed.musicType || 'preset');
+            settings.musicIndex = parsed.musicIndex ?? 1;
+            settings.theme = parsed.theme || 'dark';
+            settings.emojiSet = parsed.emojiSet || 'bomb';
+            settings.layoutMode = parsed.layoutMode || 'inner_ring';
+            settings.performanceMode = parsed.performanceMode || false;
+          }
+        } catch(e){}
+        applyTheme(); applySettingsUI(); applyMusic();
+        window._settings = settings;
+      }
+
+      function saveSettings() {
+        localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings));
+        window._settings = settings;
+        applySettingsUI(); applyMusic(); applyTheme();
+        // به‌روزرسانی Performance Mode در بازی سه‌بعدی
+        if (window._threeDGame && window._threeDGame.updatePerformanceMode) {
+          window._threeDGame.updatePerformanceMode(settings.performanceMode);
+        }
+        if (currentGameMode === 'group' || currentGameMode === 'solo') renderMines();
+      }
+
+      function applyTheme() { document.body.classList.toggle('light-theme', settings.theme === 'light'); }
+      function applySettingsUI() {
+        document.body.classList.toggle('animations-enabled', settings.animations);
+        document.body.classList.toggle('animations-disabled', !settings.animations);
+        $('toggleAnimations').checked = settings.animations;
+        $('toggleVibration').checked = settings.vibration;
+        $('toggleSound').checked = settings.sound;
+        $('toggleMusic').checked = settings.music;
+        $('themeSelect').value = settings.theme;
+        $('emojiSetSelect').value = settings.emojiSet;
+        $('layoutModeSelect').value = settings.layoutMode;
+        $('togglePerformanceMode').checked = settings.performanceMode;
+        // به‌روزرسانی نشانگر Performance Mode
+        const perfBadge = $('perfModeBadge');
+        if (perfBadge) {
+          perfBadge.style.display = settings.performanceMode ? 'inline-block' : 'none';
+          perfBadge.textContent = '⚡ فعال';
+          perfBadge.classList.toggle('active', settings.performanceMode);
+        }
+        const v = settings.musicType === 'custom' ? 'custom' : settings.musicIndex.toString();
+        $('musicSelect').value = v;
+        $('musicSelect').disabled = !settings.music || (settings.musicType==='custom' && !customAudioURL);
+        updateCustomUI();
+        window._settings = settings;
+      }
+
+      function updateCustomUI() {
+        const c = $('musicSelect').value === 'custom';
+        $('customMusicBtn').style.display = c ? 'inline-flex' : 'none';
+        if (c && customAudioURL) {
+          $('customMusicName').textContent = '✔ آهنگ دلخواه بارگذاری شد';
+          $('musicHint').textContent = '';
+          $('customMusicBtn').style.display = 'none';
+        } else if (c && !customAudioURL) {
+          $('customMusicName').textContent = '';
+          $('musicHint').textContent = 'لطفاً فایل صوتی خود را انتخاب کنید';
+          $('customMusicBtn').style.display = 'inline-flex';
+        } else {
+          $('customMusicName').textContent = '';
+          $('musicHint').textContent = settings.music ? 'موزیک پس زمینه نیازمند اینترنت است' : '';
+        }
+      }
+
+      function createBgMusic() {
+        if (bgMusic) { bgMusic.pause(); bgMusic.remove(); }
+        if (settings.musicType === 'custom' && customAudioURL) bgMusic = new Audio(customAudioURL);
+        else bgMusic = new Audio(MUSIC_URLS[settings.musicIndex - 1]);
+        bgMusic.loop = true; bgMusic.volume = 0.15;
+      }
+      function applyMusic() {
+        if (settings.music) {
+          const n = !bgMusic || (settings.musicType==='custom' && bgMusic.src!==customAudioURL) || (settings.musicType==='preset' && bgMusic.src!==MUSIC_URLS[settings.musicIndex-1]);
+          if (n) createBgMusic();
+          if (bgMusic?.paused) bgMusic.play().catch(()=>{});
+        } else { if (bgMusic) { bgMusic.pause(); bgMusic.currentTime=0; } }
+      }
+      function handleCustomFile(f) {
+        if (!f) return;
+        if (customAudioURL) URL.revokeObjectURL(customAudioURL);
+        customAudioURL = URL.createObjectURL(f);
+        settings.musicType='custom'; updateCustomUI();
+        if (settings.music) { createBgMusic(); bgMusic.play().catch(()=>{}); }
+        $('musicSelect').disabled = false;
+      }
+
+      let audioCtx=null;
+      function initAudio() { if (!settings.sound) return; if (!audioCtx) audioCtx = new (window.AudioContext||window.webkitAudioContext)(); if (audioCtx.state==='suspended') audioCtx.resume(); }
+      function playTone(f,d,t,v=0.3,r=true) { if (!settings.sound||!audioCtx) return; try { const o=audioCtx.createOscillator(),g=audioCtx.createGain(); o.type=d; o.frequency.setValueAtTime(f,audioCtx.currentTime); g.gain.setValueAtTime(v,audioCtx.currentTime); if(r) g.gain.exponentialRampToValueAtTime(0.001,audioCtx.currentTime+t); o.connect(g); g.connect(audioCtx.destination); o.start(); o.stop(audioCtx.currentTime+t); } catch(e){} }
+      function noise(d,v=0.4) { if (!settings.sound||!audioCtx) return; const l=audioCtx.sampleRate*d,b=audioCtx.createBuffer(1,l,audioCtx.sampleRate),dat=b.getChannelData(0); for(let i=0;i<l;i++) dat[i]=Math.random()*2-1; const s=audioCtx.createBufferSource(); s.buffer=b; const g=audioCtx.createGain(); g.gain.setValueAtTime(v,audioCtx.currentTime); g.gain.exponentialRampToValueAtTime(0.001,audioCtx.currentTime+d); s.connect(g); g.connect(audioCtx.destination); s.start(); }
+      function sfxDisarm() { playTone(800,'sine',0.15,0.2); setTimeout(()=>playTone(1200,'sine',0.1,0.15),80); }
+      function sfxExplosion() { noise(0.4,0.5); playTone(80,'sawtooth',0.6,0.4,false); playTone(40,'square',0.7,0.3); setTimeout(()=>playTone(200,'triangle',0.3,0.2),100); }
+      function sfxWin() { playTone(523,'sine',0.3,0.2); setTimeout(()=>playTone(659,'sine',0.3,0.2),150); setTimeout(()=>playTone(784,'sine',0.3,0.2),300); setTimeout(()=>playTone(1047,'sine',0.4,0.3),450); }
+      window._sfxDisarm = sfxDisarm;
+      window._sfxExplosion = sfxExplosion;
+      window._sfxWin = sfxWin;
+
+      let players=[], currentPlayerIndex=0, mines=[], gamePhase='setup', vibrationTimeout;
+      let soloMinesCount=3, soloRounds=0;
+
+      function getActivePlayers() { return players.filter(p=>!p.eliminated); }
+      function getNextPlayerIndex(from) { let n=(from+1)%players.length; while (players[n].eliminated&&n!==from) n=(n+1)%players.length; return n; }
+      function vibrate() { if (!settings.vibration) return; stopVibration(); if (navigator.vibrate) { const p=[]; for(let i=0;i<10;i++) p.push(200,100); navigator.vibrate(p); vibrationTimeout=setTimeout(stopVibration,3100); } }
+      function stopVibration() { if (vibrationTimeout) { clearTimeout(vibrationTimeout); vibrationTimeout=null; } navigator.vibrate?.(0); }
+      window._vibrate = vibrate;
+      window._stopVibration = stopVibration;
+      function particles(x,y) { if (!settings.animations) return; const s=getEmojiSet(), e=s.particles; for(let i=0;i<12;i++) { const p=document.createElement('div'); p.className='particle'; p.textContent=e[Math.floor(Math.random()*e.length)]; p.style.left=x+'px'; p.style.top=y+'px'; const a=(Math.PI*2*i)/12, d=60+Math.random()*80; p.style.setProperty('--tx',Math.cos(a)*d+'px'); p.style.setProperty('--ty',Math.sin(a)*d+'px'); p.style.setProperty('--rot',Math.random()*720-360+'deg'); $('particlesContainer').appendChild(p); setTimeout(()=>p.remove(),1000); } }
+
+      function computeLayoutPositions(count) {
+        const w=$('minesContainer').offsetWidth, h=$('minesContainer').offsetHeight;
+        const cx=w/2, cy=h/2, th=10;
+        let pos=[];
+        if (count<=th || settings.layoutMode==='small_cards') {
+          const r=Math.min(w,h)*0.38, step=(2*Math.PI)/count;
+          for(let i=0;i<count;i++) { const ang=i*step-Math.PI/2; pos.push({left:cx+r*Math.cos(ang),top:cy+r*Math.sin(ang),compact:settings.layoutMode==='small_cards'&&count>10}); }
+        } else {
+          const outer=Math.ceil(count/2), inner=count-outer;
+          const or=Math.min(w,h)*0.4, ir=or*0.6;
+          const os=(2*Math.PI)/outer, is=(2*Math.PI)/inner;
+          for(let i=0;i<outer;i++) { const ang=i*os-Math.PI/2; pos.push({left:cx+or*Math.cos(ang),top:cy+or*Math.sin(ang),compact:false}); }
+          for(let i=0;i<inner;i++) { const ang=i*is-Math.PI/2; pos.push({left:cx+ir*Math.cos(ang),top:cy+ir*Math.sin(ang),compact:false}); }
+        }
+        return pos;
+      }
+
+      function renderMines() {
+        const mc=$('minesContainer'); mc.innerHTML='';
+        if (!mines.length) { updateMinesCount(); return; }
+        const set=getEmojiSet(), positions=computeLayoutPositions(mines.length);
+        mines.forEach((m,i)=>{
+          const c=document.createElement('div'); c.className='mine-card'; c.dataset.index=i;
+          if (settings.animations) c.style.animationDelay=i*0.08+'s';
+          if (m.disabled) {
+            c.classList.add(m.isMine?'exploded':'disarmed');
+            c.textContent = m.isMine ? (m.explodedEmoji || set.exploded) : (m.disarmedEmoji || set.disarmed);
+          } else {
+            c.textContent = set.before;
+          }
+          const p=positions[i]; c.style.left=p.left+'px'; c.style.top=p.top+'px';
+          if (p.compact) c.classList.add('compact');
+          mc.appendChild(c);
+        });
+        updateMinesCount();
+      }
+
+      function updateCard(i) {
+        const c=$('minesContainer').querySelector(`[data-index="${i}"]`);
+        if (!c) return; const m=mines[i]; if (!m) return;
+        const s=getEmojiSet(); c.classList.remove('disarmed','exploded');
+        if (m.disabled) {
+          c.classList.add(m.isMine?'exploded':'disarmed');
+          c.textContent = m.isMine ? (m.explodedEmoji || s.exploded) : (m.disarmedEmoji || s.disarmed);
+        } else {
+          c.textContent = s.before;
+        }
+      }
+
+      function updateMinesCount() { $('minesCount').textContent = `💣 مین: ${mines.filter(m=>!m.disabled).length}`; }
+      function renderPlayers() {
+        $('playersBar').innerHTML='';
+        players.forEach((p,i)=>{
+          const b=document.createElement('div'); b.className='player-badge';
+          if (settings.animations) b.style.animationDelay=i*0.06+'s';
+          if (p.eliminated) { b.classList.add('eliminated'); b.innerHTML=`💀 ${p.name}`; }
+          else { b.innerHTML=(i===currentPlayerIndex&&gamePhase==='playing'?'👈 ':'')+p.name; if(i===currentPlayerIndex&&gamePhase==='playing') b.classList.add('active-turn'); }
+          $('playersBar').appendChild(b);
+        });
+      }
+      function updateTurn() {
+        if (gamePhase!=='playing') return;
+        const p=players[currentPlayerIndex];
+        $('turnIndicator').textContent = p&&!p.eliminated ? `👈 نوبت: ${p.name}` : '👈 نوبت: ---';
+      }
+      function refreshUI() { renderPlayers(); updateTurn(); }
+
+      function createMines(count) {
+        const arr=Array.from({length:count},(_,i)=>({id:i, isMine:false, disabled:false}));
+        arr[Math.floor(Math.random()*count)].isMine=true;
+        return arr;
+      }
+
+      function startNewRound() {
+        if (currentGameMode==='group') {
+          const active=getActivePlayers();
+          if (active.length===1) return endGame(active[0].name);
+          if (!active.length) return resetToHome();
+          if (players[currentPlayerIndex]?.eliminated) currentPlayerIndex=getNextPlayerIndex(currentPlayerIndex);
+          mines=createMines(active.length+1);
+        } else if (currentGameMode==='solo') {
+          mines=createMines(soloMinesCount);
+        }
+        if (!mines.length) return resetToHome();
+        gamePhase='playing';
+        $('gamePanel').style.display='flex';
+        $('setupPanel').style.display='none'; $('soloSetupPanel').style.display='none'; $('homePanel').style.display='none';
+        $('threeDSetupPanel').style.display='none'; $('helpPanel').style.display='none';
+        $('minesContainer').style.display='block';
+        $('threeDCanvasContainer').style.display='none';
+        $('joystickContainer').style.display='none';
+        $('fullscreenToggleBtn').style.display='none';
+        renderMines(); refreshUI();
+        if (currentGameMode==='group' && players[currentPlayerIndex]?.name?.startsWith('ربات')) scheduleRobotTurn();
+        if (currentGameMode==='solo') $('spinFutureBtn').style.display='flex';
+      }
+
+      function handleMineClick(i,e) {
+        if (gamePhase!=='playing') return;
+        const m=mines[i]; if (!m||m.disabled) return;
+        if (currentGameMode === 'group' && e) {
+          const currentPlayer = players[currentPlayerIndex];
+          if (currentPlayer.name.startsWith('ربات') || currentPlayer.eliminated) return;
+        }
+        const card = $('minesContainer').querySelector(`[data-index="${i}"]`);
+        if (card) {
+          card.classList.add('click-beat');
+          setTimeout(() => { card.classList.remove('click-beat'); processMineAfterBeat(i, e); }, 200);
+        } else {
+          processMineAfterBeat(i, e);
+        }
+      }
+
+      function processMineAfterBeat(i, e) {
+        const m=mines[i]; if (!m||m.disabled) return;
+        initAudio(); m.disabled=true;
+        const set = getEmojiSet();
+        if (m.isMine) { m.explodedEmoji = Array.isArray(set.exploded) ? getRandomEmoji(set.exploded) : set.exploded; }
+        else { m.disarmedEmoji = Array.isArray(set.disarmed) ? getRandomEmoji(set.disarmed) : set.disarmed; }
+        updateCard(i); updateMinesCount();
+        if (m.isMine) {
+          sfxExplosion(); vibrate();
+          if (e?.target) { const r=e.target.getBoundingClientRect(); particles(r.left+r.width/2,r.top+r.height/2); }
+          if (currentGameMode==='solo') { endSoloGame(); }
+          else {
+            players[currentPlayerIndex].eliminated=true;
+            gamePhase='modal';
+            showModal(`💥 ${players[currentPlayerIndex].name} منفجر شد!`, [
+              { text:'تأیید و ادامه', callback:()=>{ hideModal(); stopVibration(); currentPlayerIndex=getNextPlayerIndex(currentPlayerIndex); startNewRound(); } }
+            ]);
+          }
+        } else {
+          sfxDisarm();
+          const rem=mines.filter(m=>!m.disabled);
+          if (currentGameMode==='solo') {
+            if (rem.length===1 && rem[0].isMine) { soloRounds++; startNewRound(); }
+            else refreshUI();
+          } else {
+            if (rem.length===1 && rem[0].isMine) { currentPlayerIndex=getNextPlayerIndex(currentPlayerIndex); startNewRound(); }
+            else { currentPlayerIndex=getNextPlayerIndex(currentPlayerIndex); refreshUI(); if (currentGameMode==='group' && players[currentPlayerIndex]?.name?.startsWith('ربات')) scheduleRobotTurn(); }
+          }
+        }
+      }
+
+      function scheduleRobotTurn() {
+        const delay=500+Math.random()*2500;
+        setTimeout(()=>{
+          if (gamePhase!=='playing'||!players[currentPlayerIndex]?.name?.startsWith('ربات')) return;
+          const activeMines=mines.map((m,i)=>m.disabled?null:i).filter(i=>i!==null);
+          if (activeMines.length===0) return;
+          const idx=activeMines[Math.floor(Math.random()*activeMines.length)];
+          handleMineClick(idx, null);
+        }, delay);
+      }
+
+      function endGame(winner) {
+        gamePhase='winner'; sfxWin(); mines=[]; $('minesContainer').innerHTML=''; updateMinesCount(); refreshUI();
+        showModal(`<span class="trophy-emoji">🏆</span><div>برنده: ${winner}</div>`, [
+          { text:'🔄 بازی مجدد', callback:()=>{ hideModal(); players.forEach(p=>p.eliminated=false); currentPlayerIndex=0; startNewRound(); } },
+          { text:'🏠 خانه', callback:()=>{ hideModal(); resetToHome(); } }
+        ]);
+      }
+
+      function endSoloGame() {
+        gamePhase='winner';
+        const best=parseInt(localStorage.getItem('solo_highscore')||'0');
+        if (soloRounds>best) {
+          localStorage.setItem('solo_highscore', soloRounds);
+          $('highScoreDisplay').textContent = soloRounds;
+          showModal(`<span class="trophy-emoji">🎊</span><div>رکورد جدید!<br>${soloRounds} دور</div>`, [
+            { text:'🔄 بازی مجدد', callback:()=>{ hideModal(); startSoloGame(); } },
+            { text:'🏠 خانه', callback:()=>{ hideModal(); resetToHome(); } }
+          ]);
+        } else {
+          showModal(`<span>💥 منفجر شد!</span><div>امتیاز: ${soloRounds} دور<br>🏆 رکورد: ${best}</div>`, [
+            { text:'🔄 بازی مجدد', callback:()=>{ hideModal(); startSoloGame(); } },
+            { text:'🏠 خانه', callback:()=>{ hideModal(); resetToHome(); } }
+          ]);
+        }
+      }
+
+      function showModal(msg, btns) {
+        $('modalMessage').innerHTML=msg; $('modalButtons').innerHTML='';
+        btns.forEach(b=>{ const btn=document.createElement('button'); btn.className='btn primary'; btn.textContent=b.text; btn.onclick=b.callback; $('modalButtons').appendChild(btn); });
+        $('modalCloseBtn').style.display='none'; $('modalOverlay').classList.add('active');
+      }
+      function hideModal() { $('modalOverlay').classList.remove('active'); }
+
+      function resetToHome() {
+        stopVibration();
+        if (window._threeDGame) { window._threeDGame.destroy(); window._threeDGame = null; }
+        players=[]; currentPlayerIndex=0; mines=[]; gamePhase='home'; currentGameMode='home';
+        $('homePanel').style.display='flex';
+        $('setupPanel').style.display='none'; $('gamePanel').style.display='none'; $('soloSetupPanel').style.display='none';
+        $('threeDSetupPanel').style.display='none'; $('helpPanel').style.display='none';
+        $('spinFutureBtn').style.display='none';
+        $('fullscreenToggleBtn').style.display='none';
+        $('joystickContainer').style.display='none';
+        $('threeDCanvasContainer').style.display='none';
+        $('minesContainer').style.display='block';
+        document.body.classList.remove('game-fullscreen');
+        hideModal();
+      }
+
+      function startGroupGame() {
+        const humanPlayers = players.filter(p => !p.name.startsWith('ربات'));
+        if (humanPlayers.length === 0) { alert('حداقل یک بازیکن واقعی الزامی است.'); return; }
+        const total = players.length;
+        if (total < 2) { alert('حداقل ۲ شرکت‌کننده الزامی است.'); return; }
+        currentGameMode='group';
+        players.forEach(p=>p.eliminated=false); currentPlayerIndex=0;
+        startNewRound();
+      }
+
+      function startSoloGame() {
+        currentGameMode='solo';
+        soloRounds=0; soloMinesCount=parseInt($('minesCountInput').value)||3;
+        startNewRound();
+      }
+
+      function renderSetupPlayers() {
+        $('setupPlayerList').innerHTML='';
+        if (players.length === 0) $('setupPlayerList').innerHTML='<span style="color:var(--text-muted);">هنوز بازیکنی اضافه نشده</span>';
+        players.forEach((p,i)=>{
+          if (p.name.startsWith('ربات')) return;
+          const tag=document.createElement('div'); tag.className='player-tag';
+          tag.innerHTML=`${p.name} <button data-index="${i}">✕</button>`;
+          $('setupPlayerList').appendChild(tag);
+        });
+        document.querySelectorAll('.player-tag button').forEach(b=>{
+          b.onclick=(e)=>{
+            const index = +e.target.dataset.index;
+            players.splice(index,1);
+            renderSetupPlayers();
+            updateStartButton();
+            updateRobotList();
+          };
+        });
+        updateStartButton();
+      }
+
+      function updateStartButton() {
+        const humanCount = players.filter(p => !p.name.startsWith('ربات')).length;
+        const total = players.length;
+        $('startGroupGameBtn').disabled = (humanCount === 0 || total < 2);
+      }
+
+      function updateRobotList() {
+        const rc = parseInt($('robotCountInput').value)||0;
+        $('robotListSetup').innerHTML='';
+        for(let i=1; i<=rc; i++) {
+          const t=document.createElement('div'); t.className='player-tag'; t.textContent=`ربات ${i}`;
+          $('robotListSetup').appendChild(t);
+        }
+      }
+
+      function syncRobotPlayers() {
+        const rc = parseInt($('robotCountInput').value)||0;
+        players = players.filter(p => !p.name.startsWith('ربات'));
+        for(let i=1; i<=rc; i++) players.push({name:`ربات ${i}`, eliminated:false});
+      }
+
+      $('groupModeBtn').onclick=()=>{
+        currentGameMode='group';
+        $('homePanel').style.display='none'; $('setupPanel').style.display='flex';
+        $('threeDSetupPanel').style.display='none'; $('helpPanel').style.display='none';
+        renderSetupPlayers(); updateRobotList(); syncRobotPlayers();
+      };
+      $('soloModeBtn').onclick=()=>{
+        currentGameMode='solo';
+        $('homePanel').style.display='none'; $('soloSetupPanel').style.display='flex';
+        $('threeDSetupPanel').style.display='none'; $('helpPanel').style.display='none';
+        $('highScoreDisplay').textContent=localStorage.getItem('solo_highscore')||'0';
+      };
+      $('addPlayerBtn').onclick=()=>{
+        const total = players.filter(p => !p.name.startsWith('ربات')).length + (parseInt($('robotCountInput').value)||0);
+        if (total >= 20) { $('groupError').style.display='block'; setTimeout(()=>$('groupError').style.display='none',2000); return; }
+        const n=$('playerNameInput').value.trim();
+        if(n) {
+          players.push({name:n,eliminated:false});
+          $('playerNameInput').value='';
+          renderSetupPlayers(); updateStartButton(); syncRobotPlayers(); updateRobotList();
+        }
+      };
+      $('playerNameInput').addEventListener('keypress', (e)=>{ if(e.key==='Enter') $('addPlayerBtn').click(); });
+
+      $('robotMinusBtn').onclick=()=>{
+        let val = parseInt($('robotCountInput').value)||0;
+        val = Math.max(0, val-1);
+        $('robotCountInput').value = val;
+        syncRobotPlayers(); updateRobotList(); updateStartButton();
+      };
+      $('robotPlusBtn').onclick=()=>{
+        const humanCount = players.filter(p => !p.name.startsWith('ربات')).length;
+        let val = parseInt($('robotCountInput').value)||0;
+        if (humanCount + val >= 20) { $('groupError').style.display='block'; setTimeout(()=>$('groupError').style.display='none',2000); return; }
+        val = Math.min(19, val+1);
+        $('robotCountInput').value = val;
+        syncRobotPlayers(); updateRobotList(); updateStartButton();
+      };
+      $('robotCountInput').addEventListener('change', function() {
+        let val = parseInt(this.value);
+        const humanCount = players.filter(p => !p.name.startsWith('ربات')).length;
+        if (isNaN(val) || val < 0) this.value = 0;
+        else if (humanCount + val > 20) {
+          this.value = Math.max(0, 20 - humanCount);
+          $('groupError').style.display='block'; setTimeout(()=>$('groupError').style.display='none',2000);
+        }
+        syncRobotPlayers(); updateRobotList(); updateStartButton();
+      });
+
+      $('startGroupGameBtn').onclick=startGroupGame;
+      $('startSoloGameBtn').onclick=startSoloGame;
+      $('minesMinusBtn').onclick=()=>{ let val = parseInt($('minesCountInput').value)||2; $('minesCountInput').value = Math.max(2, val-1); };
+      $('minesPlusBtn').onclick=()=>{ let val = parseInt($('minesCountInput').value)||2; if (val >= 15) { $('soloError').style.display='block'; setTimeout(()=>$('soloError').style.display='none',2000); return; } $('minesCountInput').value = Math.min(15, val+1); };
+      $('minesCountInput').addEventListener('change', function() {
+        let val = parseInt(this.value);
+        if (isNaN(val) || val < 2) this.value = 2;
+        else if (val > 15) { this.value = 15; $('soloError').style.display='block'; setTimeout(()=>$('soloError').style.display='none',2000); }
+      });
+
+      $('backToHomeFromGroup').onclick=resetToHome;
+      $('backToHomeFromSolo').onclick=resetToHome;
+      $('restartGameBtn').onclick=resetToHome;
+      $('minesContainer').onclick=e=>{ const c=e.target.closest('.mine-card'); if(c&&gamePhase==='playing') handleMineClick(+c.dataset.index,e); };
+
+      $('floatingSettingsBtn').onclick=()=>{
+        previousPresetIndex=settings.musicType==='preset'?settings.musicIndex:1;
+        $('toggleAnimations').checked=settings.animations; $('toggleVibration').checked=settings.vibration;
+        $('toggleSound').checked=settings.sound; $('toggleMusic').checked=settings.music;
+        $('themeSelect').value=settings.theme; $('emojiSetSelect').value=settings.emojiSet; $('layoutModeSelect').value=settings.layoutMode;
+        $('togglePerformanceMode').checked=settings.performanceMode;
+        const perfBadge = $('perfModeBadge');
+        if (perfBadge) {
+          perfBadge.style.display = settings.performanceMode ? 'inline-block' : 'none';
+          perfBadge.classList.toggle('active', settings.performanceMode);
+        }
+        $('musicSelect').value=settings.musicType==='custom'?'custom':settings.musicIndex.toString();
+        $('musicSelect').disabled=!settings.music||(settings.musicType==='custom'&&!customAudioURL);
+        updateCustomUI();
+        if (currentGameMode === 'threeD') {
+          $('emojiSetRow').style.display = 'none';
+          $('layoutModeRow').style.display = 'none';
+        } else {
+          $('emojiSetRow').style.display = '';
+          $('layoutModeRow').style.display = '';
+        }
+        $('settingsOverlay').classList.add('active');
+      };
+      $('settingsCloseBtn').onclick=()=>$('settingsOverlay').classList.remove('active');
+      $('settingsCancelBtn').onclick=()=>$('settingsOverlay').classList.remove('active');
+      $('settingsSaveBtn').onclick=()=>{
+        settings.animations=$('toggleAnimations').checked; settings.vibration=$('toggleVibration').checked;
+        settings.sound=$('toggleSound').checked; settings.music=$('toggleMusic').checked;
+        settings.theme=$('themeSelect').value; settings.emojiSet=$('emojiSetSelect').value; settings.layoutMode=$('layoutModeSelect').value;
+        settings.performanceMode=$('togglePerformanceMode').checked;
+        const mv=$('musicSelect').value;
+        if (mv==='custom') {
+          if (customAudioURL) { settings.musicType='custom'; settings.musicIndex=previousPresetIndex; }
+          else { $('musicSelect').value=previousPresetIndex.toString(); settings.musicType='preset'; settings.musicIndex=previousPresetIndex; }
+        } else { settings.musicType='preset'; settings.musicIndex=parseInt(mv,10); if(customAudioURL){URL.revokeObjectURL(customAudioURL);customAudioURL=null;} }
+        saveSettings(); $('settingsOverlay').classList.remove('active');
+        if (currentGameMode === 'threeD' && window._threeDGame) {
+          window._threeDGame.updateTheme(settings.theme);
+          window._threeDGame.updatePerformanceMode(settings.performanceMode);
+        }
+      };
+      $('toggleMusic').onchange=function(){ $('musicSelect').disabled=!this.checked||($('musicSelect').value==='custom'&&!customAudioURL); updateCustomUI(); };
+      $('musicSelect').onchange=function(){
+        if (this.value==='custom') { updateCustomUI(); $('musicSelect').disabled=false; }
+        else { if(customAudioURL){URL.revokeObjectURL(customAudioURL);customAudioURL=null;} previousPresetIndex=parseInt(this.value,10); updateCustomUI(); if(settings.music){settings.musicType='preset';settings.musicIndex=previousPresetIndex;createBgMusic();bgMusic.play().catch(()=>{});} }
+      };
+      $('customMusicBtn').onclick=()=>$('customMusicInput').click();
+      $('customMusicInput').onchange=e=>{ if(e.target.files[0]) handleCustomFile(e.target.files[0]); e.target.value=''; };
+
+      $('spinFutureBtn').onclick=function(){
+        this.style.transform = this.style.transform==='rotate(180deg)' ? 'rotate(0deg)' : 'rotate(180deg)';
+        const list=document.createElement('div'); list.style.position='fixed'; list.style.bottom='80px'; list.style.right='20px';
+        list.style.background='var(--modal-bg)'; list.style.padding='10px'; list.style.borderRadius='16px'; list.style.color='var(--text-primary)';
+        list.style.zIndex='80'; list.textContent='قابلیت های ویژه به زودی اضافه می‌شود';
+        document.body.appendChild(list);
+        setTimeout(()=>list.remove(),2000);
+      };
+
+      // Help panel
+      $('helpModeBtn').onclick=()=>{
+        $('homePanel').style.display='none'; $('helpPanel').style.display='flex';
+        $('setupPanel').style.display='none'; $('soloSetupPanel').style.display='none'; $('threeDSetupPanel').style.display='none';
+        document.querySelectorAll('.help-section').forEach(s=>s.classList.remove('active'));
+        document.getElementById('help-intro').classList.add('active');
+      };
+      document.querySelectorAll('.help-nav-btn').forEach(btn=>{
+        btn.onclick=()=>{
+          const target = btn.dataset.help;
+          document.querySelectorAll('.help-section').forEach(s=>s.classList.remove('active'));
+          const section = document.getElementById(`help-${target}`);
+          if (section) section.classList.add('active');
+        };
+      });
+      $('backToHomeFromHelp').onclick=resetToHome;
+
+      // ========== مدیریت پنل سه‌بعدی ==========
+      window._threeDPlayers = [];
+      function renderThreeDSetupPlayers() {
+        $('threeDSetupPlayerList').innerHTML='';
+        const p = window._threeDPlayers;
+        if (p.length === 0) $('threeDSetupPlayerList').innerHTML='<span style="color:var(--text-muted);">هنوز بازیکنی اضافه نشده</span>';
+        p.forEach((pl,i)=>{
+          if (pl.name.startsWith('ربات')) return;
+          const tag=document.createElement('div'); tag.className='player-tag';
+          tag.innerHTML=`${pl.name} <button data-index="${i}">✕</button>`;
+          $('threeDSetupPlayerList').appendChild(tag);
+        });
+        document.querySelectorAll('#threeDSetupPlayerList .player-tag button').forEach(b=>{
+          b.onclick=(e)=>{
+            const idx = +e.target.dataset.index;
+            window._threeDPlayers.splice(idx,1);
+            renderThreeDSetupPlayers(); updateThreeDStartButton(); updateThreeDRobotList(); syncThreeDRobotPlayers();
+          };
+        });
+        updateThreeDStartButton();
+      }
+      function updateThreeDStartButton() {
+        const p = window._threeDPlayers;
+        const humanCount = p.filter(pl => !pl.name.startsWith('ربات')).length;
+        const total = p.length;
+        $('startThreeDGameBtn').disabled = (humanCount === 0 || total < 2);
+      }
+      function updateThreeDRobotList() {
+        const rc = parseInt($('threeDRobotCountInput').value)||0;
+        $('threeDRobotListSetup').innerHTML='';
+        for(let i=1; i<=rc; i++) {
+          const t=document.createElement('div'); t.className='player-tag'; t.textContent=`ربات ${i}`;
+          $('threeDRobotListSetup').appendChild(t);
+        }
+      }
+      function syncThreeDRobotPlayers() {
+        const rc = parseInt($('threeDRobotCountInput').value)||0;
+        window._threeDPlayers = window._threeDPlayers.filter(p => !p.name.startsWith('ربات'));
+        for(let i=1; i<=rc; i++) window._threeDPlayers.push({name:`ربات ${i}`, eliminated:false});
+      }
+
+      $('threeDModeBtn').onclick=()=>{
+        currentGameMode='threeD';
+        $('homePanel').style.display='none'; $('threeDSetupPanel').style.display='flex'; $('helpPanel').style.display='none';
+        window._threeDPlayers = [];
+        $('threeDPlayerNameInput').value=''; $('threeDRobotCountInput').value='0';
+        renderThreeDSetupPlayers(); updateThreeDRobotList(); syncThreeDRobotPlayers();
+      };
+      $('threeDAddPlayerBtn').onclick=()=>{
+        const p = window._threeDPlayers;
+        const humanCount = p.filter(pl => !pl.name.startsWith('ربات')).length;
+        const robotCount = parseInt($('threeDRobotCountInput').value)||0;
+        if (humanCount + robotCount >= 20) { $('threeDGroupError').style.display='block'; setTimeout(()=>$('threeDGroupError').style.display='none',2000); return; }
+        const n=$('threeDPlayerNameInput').value.trim();
+        if(n) {
+          window._threeDPlayers.push({name:n,eliminated:false});
+          $('threeDPlayerNameInput').value='';
+          renderThreeDSetupPlayers(); updateThreeDStartButton(); syncThreeDRobotPlayers(); updateThreeDRobotList();
+        }
+      };
+      $('threeDPlayerNameInput').addEventListener('keypress', (e)=>{ if(e.key==='Enter') $('threeDAddPlayerBtn').click(); });
+      $('threeDRobotMinusBtn').onclick=()=>{
+        let val = parseInt($('threeDRobotCountInput').value)||0; val = Math.max(0, val-1);
+        $('threeDRobotCountInput').value = val;
+        syncThreeDRobotPlayers(); updateThreeDRobotList(); updateThreeDStartButton();
+      };
+      $('threeDRobotPlusBtn').onclick=()=>{
+        const p = window._threeDPlayers;
+        const humanCount = p.filter(pl => !pl.name.startsWith('ربات')).length;
+        let val = parseInt($('threeDRobotCountInput').value)||0;
+        if (humanCount + val >= 20) { $('threeDGroupError').style.display='block'; setTimeout(()=>$('threeDGroupError').style.display='none',2000); return; }
+        val = Math.min(19, val+1);
+        $('threeDRobotCountInput').value = val;
+        syncThreeDRobotPlayers(); updateThreeDRobotList(); updateThreeDStartButton();
+      };
+      $('threeDRobotCountInput').addEventListener('change', function() {
+        let val = parseInt(this.value);
+        const p = window._threeDPlayers;
+        const humanCount = p.filter(pl => !pl.name.startsWith('ربات')).length;
+        if (isNaN(val) || val < 0) this.value = 0;
+        else if (humanCount + val > 20) {
+          this.value = Math.max(0, 20 - humanCount);
+          $('threeDGroupError').style.display='block'; setTimeout(()=>$('threeDGroupError').style.display='none',2000);
+        }
+        syncThreeDRobotPlayers(); updateThreeDRobotList(); updateThreeDStartButton();
+      });
+      $('backToHomeFromThreeD').onclick=resetToHome;
+      $('startThreeDGameBtn').onclick=()=>{
+        const p = window._threeDPlayers || [];
+        const human = p.filter(pl => !pl.name.startsWith('ربات')).length;
+        if (human === 0) { alert('حداقل یک بازیکن واقعی الزامی است.'); return; }
+        if (p.length < 2) { alert('حداقل ۲ شرکت‌کننده الزامی است.'); return; }
+        currentGameMode = 'threeD';
+        $('threeDSetupPanel').style.display = 'none';
+        $('gamePanel').style.display = 'flex';
+        $('minesContainer').style.display = 'none';
+        $('threeDCanvasContainer').style.display = 'block';
+        $('joystickContainer').style.display = 'block';
+        $('fullscreenToggleBtn').style.display = 'flex';
+        // theme-toggle-btn دیگر نمایش داده نمی‌شود
+        document.body.classList.add('game-fullscreen');
+        if (window._threeDGame) window._threeDGame.destroy();
+        if (window.ThreeDGame) {
+          window._threeDGame = new window.ThreeDGame();
+          window._threeDGame.start(p, settings.theme, settings.performanceMode);
+        } else {
+          setTimeout(() => {
+            if (window.ThreeDGame) {
+              window._threeDGame = new window.ThreeDGame();
+              window._threeDGame.start(p, settings.theme, settings.performanceMode);
+            }
+          }, 500);
+        }
+      };
+
+      $('fullscreenToggleBtn').onclick=()=>{
+        document.body.classList.toggle('game-fullscreen');
+        if (window._threeDGame) setTimeout(()=>window._threeDGame._onResize(),100);
+      };
+
+      window.addEventListener('beforeunload', stopVibration);
+      loadSettings();
+      resetToHome();
+    })();
+
+    // =====================================================================
+    //   ماژول سه‌بعدی بهبودیافته – نسخه گسترش‌یافته
+    //   شامل: انفجار واقعی، ربات‌های هوشمند، نور مهتاب،
+    //   حالت اجرای روان، کمپ‌فایر پیشرفته و بهینه‌سازی‌ها
+    // =====================================================================
+    (async function() {
+      const THREE = await import('three');
+      const $ = (s) => document.getElementById(s);
+
+      // -------------------------------------------------------------------
+      //  کلاس کمکی: سیستم ذرات انفجار (Smoke, Fire, Sparks, Debris)
+      // -------------------------------------------------------------------
+      class ExplosionEffect {
+        constructor(scene, THREE, position, performanceMode = false) {
+          this.scene = scene;
+          this.THREE = THREE;
+          this.position = position.clone();
+          this.particles = [];
+          this.performanceMode = performanceMode;
+          this._createExplosion();
+        }
+
+        _createExplosion() {
+          const THREE = this.THREE;
+          const pos = this.position;
+          const particleCount = this.performanceMode ? 15 : 40;
+
+          // --- دود غلیظ (Smoke) ---
+          const smokeCount = this.performanceMode ? 6 : 20;
+          const smokeGeo = new THREE.BufferGeometry();
+          const smokePositions = new Float32Array(smokeCount * 3);
+          const smokeSizes = new Float32Array(smokeCount);
+          const smokeData = [];
+          for (let i = 0; i < smokeCount; i++) {
+            smokePositions[i * 3] = pos.x + (Math.random() - 0.5) * 0.3;
+            smokePositions[i * 3 + 1] = pos.y + Math.random() * 0.5;
+            smokePositions[i * 3 + 2] = pos.z + (Math.random() - 0.5) * 0.3;
+            smokeSizes[i] = 0.4 + Math.random() * 0.8;
+            smokeData.push({
+              velocity: new THREE.Vector3((Math.random() - 0.5) * 1.5, 1 + Math.random() * 2, (Math.random() - 0.5) * 1.5),
+              life: 0.8 + Math.random() * 1.2,
+              age: 0,
+              maxSize: smokeSizes[i]
+            });
+          }
+          smokeGeo.setAttribute('position', new THREE.BufferAttribute(smokePositions, 3));
+          smokeGeo.setAttribute('size', new THREE.BufferAttribute(smokeSizes, 1));
+          const smokeMat = new THREE.PointsMaterial({
+            color: 0x444444,
+            size: 0.5,
+            transparent: true,
+            opacity: 0.7,
+            blending: THREE.NormalBlending,
+            depthWrite: false
+          });
+          const smokePoints = new THREE.Points(smokeGeo, smokeMat);
+          smokePoints.userData = { smokeData, type: 'smoke' };
+          this.scene.add(smokePoints);
+          this.particles.push(smokePoints);
+
+          // --- آتش و جرقه (Fire & Sparks) ---
+          const fireCount = this.performanceMode ? 5 : 15;
+          const fireGeo = new THREE.BufferGeometry();
+          const firePositions = new Float32Array(fireCount * 3);
+          const fireData = [];
+          for (let i = 0; i < fireCount; i++) {
+            firePositions[i * 3] = pos.x + (Math.random() - 0.5) * 0.2;
+            firePositions[i * 3 + 1] = pos.y + Math.random() * 0.3;
+            firePositions[i * 3 + 2] = pos.z + (Math.random() - 0.5) * 0.2;
+            fireData.push({
+              velocity: new THREE.Vector3((Math.random() - 0.5) * 2, 1.5 + Math.random() * 3, (Math.random() - 0.5) * 2),
+              life: 0.4 + Math.random() * 0.6,
+              age: 0
+            });
+          }
+          fireGeo.setAttribute('position', new THREE.BufferAttribute(firePositions, 3));
+          const fireMat = new THREE.PointsMaterial({
+            color: 0xff6600,
+            size: 0.2,
+            transparent: true,
+            opacity: 0.9,
+            blending: THREE.AdditiveBlending,
+            depthWrite: false
+          });
+          const firePoints = new THREE.Points(fireGeo, fireMat);
+          firePoints.userData = { fireData, type: 'fire' };
+          this.scene.add(firePoints);
+          this.particles.push(firePoints);
+
+          // --- نور انفجار موقت ---
+          if (!this.performanceMode) {
+            const explosionLight = new THREE.PointLight(0xff4400, 3, 8);
+            explosionLight.position.copy(pos);
+            explosionLight.position.y += 1;
+            this.scene.add(explosionLight);
+            this.particles.push(explosionLight);
+            // کاهش تدریجی نور
+            this._explosionLight = explosionLight;
+          }
+        }
+
+        update(delta) {
+          const THREE = this.THREE;
+          let allDead = true;
+          for (const particle of this.particles) {
+            if (particle.isPointLight) {
+              if (this._explosionLight) {
+                this._explosionLight.intensity *= 0.9;
+                if (this._explosionLight.intensity < 0.05) {
+                  this.scene.remove(this._explosionLight);
+                  this._explosionLight = null;
+                }
+              }
+              continue;
+            }
+            if (!particle.isPoints) continue;
+            const dataArr = particle.userData?.smokeData || particle.userData?.fireData;
+            if (!dataArr) continue;
+            const posAttr = particle.geometry.getAttribute('position');
+            const sizeAttr = particle.geometry.getAttribute('size');
+            let anyAlive = false;
+            for (let i = 0; i < dataArr.length; i++) {
+              const d = dataArr[i];
+              d.age += delta;
+              if (d.age < d.life) {
+                anyAlive = true;
+                posAttr.array[i * 3] += d.velocity.x * delta;
+                posAttr.array[i * 3 + 1] += d.velocity.y * delta;
+                posAttr.array[i * 3 + 2] += d.velocity.z * delta;
+                d.velocity.y += 0.5 * delta;
+                if (sizeAttr && d.maxSize) {
+                  const progress = d.age / d.life;
+                  sizeAttr.array[i] = d.maxSize * (1 - progress);
+                }
+              } else {
+                posAttr.array[i * 3 + 1] = -999;
+              }
+            }
+            posAttr.needsUpdate = true;
+            if (sizeAttr) sizeAttr.needsUpdate = true;
+            if (!anyAlive) {
+              particle.material.opacity = Math.max(0, particle.material.opacity - delta * 2);
+            }
+            if (particle.material.opacity <= 0.01 && !anyAlive) {
+              this.scene.remove(particle);
+              particle.geometry.dispose();
+              particle.material.dispose();
+            } else {
+              allDead = false;
+            }
+          }
+          if (allDead && this._explosionLight === null) {
+            this.particles = [];
+          }
+          return this.particles.length > 0;
+        }
+
+        destroy() {
+          for (const p of this.particles) {
+            this.scene.remove(p);
+            if (p.geometry) p.geometry.dispose();
+            if (p.material) p.material.dispose();
+          }
+          this.particles = [];
+        }
+      }
+
+      // -------------------------------------------------------------------
+      //  کلاس اصلی بازی سه‌بعدی
+      // -------------------------------------------------------------------
+      class ThreeDGame {
+        constructor() {
+          this.THREE = THREE;
+          this.scene = null;
+          this.camera = null;
+          this.renderer = null;
+          this.ground = null;
+          this.playerMeshes = [];
+          this.mineMeshes = [];
+          this.activeCharacter = null;
+          this.raycaster = null;
+          this.cameraTarget = new THREE.Vector3();
+          this.MOVE_SPEED = 3.5;
+          this.INTERACT_DIST = 1.8;
+          this.COUNTDOWN_DURATION = 5000;
+          this.interactionState = { mineIndex: null, startTime: 0, active: false };
+          this.countdownSprite = null;
+          this.countdownCanvas = null;
+          this.countdownCtx = null;
+          // ربات پیشرفته: حالت‌های بیشتر برای رفتار طبیعی‌تر
+          this.robotState = {
+            phase: 'idle', targetMineIndex: null, wanderAngle: 0,
+            wanderTimer: 0, idleTimer: 0, hesitationTimer: 0,
+            lookAroundTimer: 0, lookAngle: 0, subPhase: 'none'
+          };
+          this.joystickActive = false;
+          this.joystickBaseRect = null;
+          this.joystickCenter = { x: 0, y: 0 };
+          this.joystickVec = new THREE.Vector2();
+          this.knobMaxDist = 45;
+          this.players = [];
+          this.currentPlayerIndex = 0;
+          this.mines = [];
+          this.gamePhase = 'setup';
+          this.animationId = null;
+          this.lastTime = performance.now();
+          this.theme = 'dark';
+          this.campfire = null;
+          this.flames = [];
+          this.sunLight = null;
+          this.mainLight = null;
+          this.moonLight = null;
+          this.treeInstancedMesh = null;
+          this.rockInstancedMesh = null;
+          this.performanceMode = false;
+          this.activeExplosions = [];
+          this._boundAnimate = this._animate.bind(this);
+          this._boundOnResize = this._onResize.bind(this);
+          this._boundOnCanvasClick = this._onCanvasClick.bind(this);
+          this._boundJoystickStart = this._joystickStart.bind(this);
+          this._boundJoystickMove = this._joystickMove.bind(this);
+          this._boundJoystickEnd = this._joystickEnd.bind(this);
+          // کش برای بهینه‌سازی
+          this._tempVec3 = new THREE.Vector3();
+          this._tempDir = new THREE.Vector3();
+        }
+
+        start(playersList, theme = 'dark', performanceMode = false) {
+          this.players = playersList.map(p => ({ ...p, mesh: null }));
+          this.currentPlayerIndex = 0;
+          this.mines = [];
+          this.gamePhase = 'playing';
+          this.theme = theme;
+          this.performanceMode = performanceMode;
+          this._initScene();
+          if (!this.renderer) { alert('خطا در بارگذاری صحنه سه‌بعدی'); return; }
+          this._initJoystick();
+          this._spawnPlayers();
+          this._startNewRound();
+          this.lastTime = performance.now();
+          this.animationId = requestAnimationFrame(this._boundAnimate);
+          window.addEventListener('resize', this._boundOnResize);
+          document.body.classList.add('game-fullscreen');
+          setTimeout(() => this._onResize(), 100);
+          window.initAudio?.();
+        }
+
+        destroy() {
+          if (this.animationId) cancelAnimationFrame(this.animationId);
+          window.removeEventListener('resize', this._boundOnResize);
+          this._clearMinesFromScene();
+          this.activeExplosions.forEach(exp => exp.destroy());
+          this.activeExplosions = [];
+          this.players.forEach(p => { if (p.mesh) this.scene?.remove(p.mesh); p.mesh = null; });
+          this.playerMeshes = [];
+          this.activeCharacter = null;
+          if (this.countdownSprite) this.scene?.remove(this.countdownSprite);
+          this.countdownSprite = null;
+          if (this.renderer) {
+            this.renderer.domElement.remove();
+            this.renderer.dispose();
+            this.renderer = null;
+          }
+          document.body.classList.remove('game-fullscreen');
+          const jc = document.getElementById('joystickContainer');
+          if (jc) jc.style.display = 'none';
+          document.getElementById('fullscreenToggleBtn').style.display = 'none';
+        }
+
+        toggleTheme() {
+          this.theme = this.theme === 'dark' ? 'light' : 'dark';
+          this._updateLighting();
+        }
+
+        updateTheme(theme) {
+          if (this.theme === theme) return;
+          this.theme = theme;
+          this._updateLighting();
+        }
+
+        updatePerformanceMode(mode) {
+          this.performanceMode = mode;
+          if (this.renderer) {
+            const pixelRatio = mode ? 1 : Math.min(window.devicePixelRatio, 2);
+            this.renderer.setPixelRatio(pixelRatio);
+            if (this.renderer.shadowMap) {
+              this.renderer.shadowMap.type = mode ? this.THREE.BasicShadowMap : this.THREE.PCFSoftShadowMap;
+            }
+          }
+        }
+
+        // -------------------------------------------------------------------
+        //  نورپردازی: مهتاب در شب، کمپ‌فایر قوی‌تر، خاموشی در روز
+        // -------------------------------------------------------------------
+        _updateLighting() {
+          const THREE = this.THREE;
+          // حذف نورهای قبلی
+          if (this.sunLight) { this.scene.remove(this.sunLight); this.sunLight = null; }
+          if (this.moonLight) { this.scene.remove(this.moonLight); this.moonLight = null; }
+          if (this.mainLight) { this.scene.remove(this.mainLight); this.mainLight = null; }
+          this.scene.children = this.scene.children.filter(c => !(c.isLight && c.type === 'AmbientLight'));
+          this.scene.children = this.scene.children.filter(c => !(c.isLight && c.type === 'HemisphereLight'));
+          // پاکسازی نورهای کمپ‌فایر
+          if (this.campfire) {
+            this.campfire.children = this.campfire.children.filter(c => !c.isLight);
+            this.flames.forEach(f => this.campfire.remove(f));
+            this.flames = [];
+            this.campfire.children = this.campfire.children.filter(c => !(c.isMesh && c.material && c.material.color && c.material.color.getHex() === 0xff6600));
+          }
+
+          if (this.theme === 'light') {
+            // --- روز: کمپ‌فایر خاموش (بدون هیچ نوری) ---
+            this.sunLight = new THREE.DirectionalLight(0xffeedd, 1.0);
+            this.sunLight.position.set(30, 15, -10);
+            this.sunLight.castShadow = !this.performanceMode;
+            if (!this.performanceMode) {
+              this.sunLight.shadow.mapSize.set(1024, 1024);
+              this.sunLight.shadow.camera.near = 1;
+              this.sunLight.shadow.camera.far = 40;
+              this.sunLight.shadow.camera.left = -15;
+              this.sunLight.shadow.camera.right = 15;
+              this.sunLight.shadow.camera.top = 15;
+              this.sunLight.shadow.camera.bottom = -15;
+            }
+            this.scene.add(this.sunLight);
+            this.mainLight = this.sunLight;
+            const ambient = new THREE.AmbientLight(0x8899aa, 0.5);
+            this.scene.add(ambient);
+            const hemi = new THREE.HemisphereLight(0x87CEEB, 0x4a7c3f, 0.3);
+            this.scene.add(hemi);
+            this._createSky();
+            if (this.ground) this.ground.material.color.set(0x5a8c4a);
+            // کمپ‌فایر در روز: هیچ نوری منتشر نمی‌کند
+          } else {
+            // --- شب: مهتاب ملایم + کمپ‌فایر قوی ---
+            // مهتاب (نور آبی-خاکستری یکنواخت)
+            this.moonLight = new THREE.DirectionalLight(0x8899cc, 0.25);
+            this.moonLight.position.set(10, 20, 5);
+            this.moonLight.castShadow = false;
+            this.scene.add(this.moonLight);
+            // نور محیطی مهتابی برای جلوگیری از تاریکی مطلق
+            const moonAmbient = new THREE.AmbientLight(0x223344, 0.35);
+            this.scene.add(moonAmbient);
+            // نور نیم‌کره برای سایه‌های ملایم
+            const nightHemi = new THREE.HemisphereLight(0x445566, 0x112233, 0.2);
+            this.scene.add(nightHemi);
+            this._createSky();
+            if (this.ground) this.ground.material.color.set(0x2d5a27);
+            // کمپ‌فایر در شب: نور قوی با شعاع گسترده
+            if (this.campfire) {
+              const decoLight = new THREE.PointLight(0xff6600, 0.9, 3);
+              decoLight.position.set(0, 0.6, 0);
+              decoLight.castShadow = false;
+              this.campfire.add(decoLight);
+              // نور اصلی کمپ‌فایر با شعاع زیاد (پوشش فراتر از منطقه مین‌ها)
+              const gameLight = new THREE.PointLight(0xff9944, 1.6, 16);
+              gameLight.position.set(0, 0.8, 0);
+              gameLight.castShadow = !this.performanceMode;
+              if (!this.performanceMode) {
+                gameLight.shadow.mapSize.set(512, 512);
+                gameLight.shadow.camera.near = 0.5;
+                gameLight.shadow.camera.far = 18;
+              }
+              this.campfire.add(gameLight);
+              this.mainLight = gameLight;
+              // شعله‌های متحرک
+              const flameGeo = new THREE.ConeGeometry(0.12, 0.35, 6);
+              const flameMat = new THREE.MeshBasicMaterial({ color: 0xff6600, transparent: true, opacity: 0.8 });
+              for (let i = 0; i < 4; i++) {
+                const flame = new THREE.Mesh(flameGeo, flameMat);
+                flame.position.set((Math.random() - 0.5) * 0.2, 0.5, (Math.random() - 0.5) * 0.2);
+                flame.userData = { speed: 0.01 + Math.random() * 0.02, offset: Math.random() * Math.PI * 2 };
+                this.campfire.add(flame);
+                this.flames.push(flame);
+              }
+            }
+          }
+          // مه (Fog)
+          if (this.theme === 'light') {
+            this.scene.fog = new THREE.Fog(0xB0E0E6, 15, 30);
+          } else {
+            this.scene.fog = new THREE.Fog(0x0a0a1a, 6, 18);
+          }
+        }
+
+        _initScene() {
+          const THREE = this.THREE;
+          const container = document.getElementById('threeDCanvasContainer');
+          const w = container.clientWidth;
+          const h = container.clientHeight;
+          if (w === 0 || h === 0) { setTimeout(() => this._initScene(), 100); return; }
+
+          this.scene = new THREE.Scene();
+          this._createSky();
+          this.camera = new THREE.PerspectiveCamera(45, w / h, 0.5, 50);
+          this.camera.position.set(0, 8, 12);
+          this.cameraTarget.set(0, 0, 0);
+          this.camera.lookAt(this.cameraTarget);
+
+          // تنظیمات رندر بر اساس Performance Mode
+          const pixelRatio = this.performanceMode ? 1 : Math.min(window.devicePixelRatio, 2);
+          const shadowType = this.performanceMode ? THREE.BasicShadowMap : THREE.PCFSoftShadowMap;
+          this.renderer = new THREE.WebGLRenderer({ antialias: !this.performanceMode, powerPreference: "high-performance" });
+          this.renderer.setSize(w, h);
+          this.renderer.setPixelRatio(pixelRatio);
+          this.renderer.shadowMap.enabled = !this.performanceMode;
+          this.renderer.shadowMap.type = shadowType;
+          container.appendChild(this.renderer.domElement);
+
+          const groundGeo = new THREE.PlaneGeometry(25, 25);
+          const groundMat = new THREE.MeshStandardMaterial({ color: 0x2d5a27, roughness: 0.9 });
+          this.ground = new THREE.Mesh(groundGeo, groundMat);
+          this.ground.rotation.x = -Math.PI / 2;
+          this.ground.position.y = -0.01;
+          this.ground.receiveShadow = !this.performanceMode;
+          this.scene.add(this.ground);
+
+          this._createTreesOptimized();
+          this._createRocksOptimized();
+          this._createCampfire();
+
+          this.raycaster = new THREE.Raycaster();
+          this.renderer.domElement.addEventListener('click', this._boundOnCanvasClick);
+          this._createCountdownSprite();
+          this._updateLighting();
+        }
+
+        _createSky() {
+          const THREE = this.THREE;
+          const canvas = document.createElement('canvas');
+          canvas.width = 512; canvas.height = 512;
+          const ctx = canvas.getContext('2d');
+          const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+          if (this.theme === 'light') {
+            gradient.addColorStop(0, '#87CEEB');
+            gradient.addColorStop(0.5, '#B0E0E6');
+            gradient.addColorStop(1, '#E0F0FF');
+          } else {
+            gradient.addColorStop(0, '#0a0a1a');
+            gradient.addColorStop(0.4, '#1a1a3a');
+            gradient.addColorStop(1, '#2a2a4a');
+            for (let i = 0; i < 100; i++) {
+              ctx.fillStyle = `rgba(255,255,255,${Math.random()*0.8+0.2})`;
+              ctx.fillRect(Math.random()*canvas.width, Math.random()*canvas.height*0.6, 2, 2);
+            }
+          }
+          ctx.fillStyle = gradient;
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+          const texture = new THREE.CanvasTexture(canvas);
+          this.scene.background = texture;
+        }
+
+        _createTreesOptimized() {
+          const THREE = this.THREE;
+          const trunkGeo = new THREE.CylinderGeometry(0.15, 0.2, 2, 6);
+          const trunkMat = new THREE.MeshStandardMaterial({ color: 0x8B5A2B });
+          const foliageGeo = new THREE.ConeGeometry(0.7, 2, 6);
+          const foliageMat = new THREE.MeshStandardMaterial({ color: this.theme === 'light' ? 0x4a8c44 : 0x2E7D32 });
+          const count = 25;
+          const dummy = new THREE.Object3D();
+          const matrices = [];
+          const treePositions = [];
+          for (let i = 0; i < count; i++) {
+            const angle = (i / count) * Math.PI * 2;
+            const r = 9 + Math.random() * 3;
+            treePositions.push({ x: Math.cos(angle) * r, z: Math.sin(angle) * r });
+          }
+          for (let i = 0; i < 10; i++) {
+            const x = (Math.random() - 0.5) * 14;
+            const z = (Math.random() - 0.5) * 14;
+            if (Math.sqrt(x * x + z * z) > 6) treePositions.push({ x, z });
+          }
+          treePositions.forEach(pos => {
+            dummy.position.set(pos.x, 0, pos.z);
+            dummy.updateMatrix();
+            matrices.push(dummy.matrix.clone());
+          });
+          const castShadow = !this.performanceMode;
+          const mergedTrunkGeo = new THREE.InstancedMesh(trunkGeo, trunkMat, matrices.length);
+          const mergedFoliageGeo1 = new THREE.InstancedMesh(foliageGeo, foliageMat, matrices.length);
+          const mergedFoliageGeo2 = new THREE.InstancedMesh(foliageGeo, foliageMat, matrices.length);
+          matrices.forEach((m, i) => {
+            const pos = new THREE.Vector3();
+            pos.setFromMatrixPosition(m);
+            mergedTrunkGeo.setMatrixAt(i, m);
+            dummy.position.set(pos.x, 2.2, pos.z);
+            dummy.updateMatrix();
+            mergedFoliageGeo1.setMatrixAt(i, dummy.matrix.clone());
+            dummy.position.set(pos.x, 3.2, pos.z);
+            dummy.scale.set(0.8, 0.8, 0.8);
+            dummy.updateMatrix();
+            mergedFoliageGeo2.setMatrixAt(i, dummy.matrix.clone());
+            dummy.scale.set(1, 1, 1);
+          });
+          mergedTrunkGeo.castShadow = castShadow; mergedTrunkGeo.receiveShadow = castShadow;
+          mergedFoliageGeo1.castShadow = castShadow; mergedFoliageGeo1.receiveShadow = castShadow;
+          mergedFoliageGeo2.castShadow = castShadow; mergedFoliageGeo2.receiveShadow = castShadow;
+          this.scene.add(mergedTrunkGeo);
+          this.scene.add(mergedFoliageGeo1);
+          this.scene.add(mergedFoliageGeo2);
+          this.treeInstancedMesh = [mergedTrunkGeo, mergedFoliageGeo1, mergedFoliageGeo2];
+        }
+
+        _createRocksOptimized() {
+          const THREE = this.THREE;
+          const rockGeo = new THREE.DodecahedronGeometry(0.3, 1);
+          const rockMat = new THREE.MeshStandardMaterial({ color: 0x666666, roughness: 0.8 });
+          const count = 12;
+          const dummy = new THREE.Object3D();
+          const matrices = [];
+          for (let i = 0; i < count; i++) {
+            const angle = Math.random() * Math.PI * 2;
+            const r = 2 + Math.random() * 8;
+            dummy.position.set(Math.cos(angle) * r, 0.15, Math.sin(angle) * r);
+            dummy.scale.set(0.5 + Math.random(), 0.3 + Math.random() * 0.5, 0.5 + Math.random());
+            dummy.updateMatrix();
+            matrices.push(dummy.matrix.clone());
+          }
+          const instancedMesh = new THREE.InstancedMesh(rockGeo, rockMat, matrices.length);
+          matrices.forEach((m, i) => instancedMesh.setMatrixAt(i, m));
+          instancedMesh.castShadow = !this.performanceMode;
+          instancedMesh.receiveShadow = !this.performanceMode;
+          this.scene.add(instancedMesh);
+          this.rockInstancedMesh = instancedMesh;
+        }
+
+        _createCampfire() {
+          const THREE = this.THREE;
+          const group = new THREE.Group();
+          const logGeo = new THREE.CylinderGeometry(0.1, 0.12, 1, 6);
+          const logMat = new THREE.MeshStandardMaterial({ color: 0x5a3a1a });
+          for (let i = 0; i < 5; i++) {
+            const log = new THREE.Mesh(logGeo, logMat);
+            log.position.y = 0.2;
+            log.rotation.z = (Math.PI / 4) * (i % 2 ? 1 : -1);
+            log.rotation.x = Math.PI / 4 + i * 0.3;
+            log.castShadow = !this.performanceMode;
+            log.receiveShadow = !this.performanceMode;
+            group.add(log);
+          }
+          group.position.set(0, 0, 0);
+          this.scene.add(group);
+          this.campfire = group;
+        }
+
+        _createCountdownSprite() {
+          const THREE = this.THREE;
+          this.countdownCanvas = document.createElement('canvas');
+          this.countdownCanvas.width = 128;
+          this.countdownCanvas.height = 128;
+          this.countdownCtx = this.countdownCanvas.getContext('2d');
+          const texture = new THREE.CanvasTexture(this.countdownCanvas);
+          const material = new THREE.SpriteMaterial({ map: texture, transparent: true });
+          this.countdownSprite = new THREE.Sprite(material);
+          this.countdownSprite.scale.set(0.8, 0.8, 1);
+          this.countdownSprite.visible = false;
+          this.scene.add(this.countdownSprite);
+        }
+
+        _updateCountdownSprite(minePosition, progress) {
+          const ctx = this.countdownCtx;
+          if (!ctx) return;
+          ctx.clearRect(0, 0, 128, 128);
+          ctx.beginPath(); ctx.arc(64, 64, 40, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(0,0,0,0.6)'; ctx.fill();
+          ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 4; ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(64, 64);
+          ctx.arc(64, 64, 38, -Math.PI / 2, -Math.PI / 2 + (Math.PI * 2 * progress));
+          ctx.fillStyle = '#ffb347'; ctx.fill();
+          ctx.fillStyle = '#ffffff'; ctx.font = 'bold 28px "CustomGameFont", "Segoe UI"';
+          ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          ctx.fillText(Math.ceil((1 - progress) * 5).toString(), 64, 64);
+          this.countdownSprite.material.map.needsUpdate = true;
+          this.countdownSprite.position.copy(minePosition).add(new this.THREE.Vector3(0, 1.2, 0));
+          this.countdownSprite.visible = true;
+        }
+
+        _createNameTag(name) {
+          const THREE = this.THREE;
+          const canvas = document.createElement('canvas');
+          canvas.width = 256; canvas.height = 64;
+          const ctx = canvas.getContext('2d');
+          ctx.fillStyle = 'rgba(0,0,0,0.7)';
+          ctx.beginPath(); ctx.roundRect(0, 0, canvas.width, canvas.height, 20); ctx.fill();
+          ctx.fillStyle = '#fff';
+          ctx.font = 'bold 24px "CustomGameFont", "Segoe UI"';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(name, canvas.width/2, canvas.height/2);
+          const texture = new THREE.CanvasTexture(canvas);
+          const material = new THREE.SpriteMaterial({ map: texture, transparent: true });
+          const sprite = new THREE.Sprite(material);
+          sprite.scale.set(1.5, 0.4, 1);
+          return sprite;
+        }
+
+        _spawnPlayers() {
+          this.players.forEach(p => { if (p.mesh) this.scene.remove(p.mesh); p.mesh = null; });
+          this.playerMeshes = [];
+          const activePlayers = this.players.filter(p => !p.eliminated);
+          const angleStep = (Math.PI * 2) / activePlayers.length;
+          activePlayers.forEach((player, i) => {
+            const angle = i * angleStep;
+            const pos = new this.THREE.Vector3(Math.cos(angle) * 5, 0, Math.sin(angle) * 5);
+            const color = player.name.startsWith('ربات') ? 0x888888 : 0xff8c42;
+            const char = this._createPlayerCharacter(color);
+            char.position.copy(pos);
+            const nameTag = this._createNameTag(player.name);
+            nameTag.position.set(0, 1.4, 0);
+            char.add(nameTag);
+            this.scene.add(char);
+            player.mesh = char;
+            this.playerMeshes.push(char);
+          });
+          if (activePlayers.length > 0) this._switchActiveCharacter(0);
+        }
+
+        _createPlayerCharacter(color = 0xff8c42) {
+          const THREE = this.THREE;
+          const group = new THREE.Group();
+          const bodyGeo = new THREE.CylinderGeometry(0.3, 0.35, 0.8, 8);
+          const body = new THREE.Mesh(bodyGeo, new THREE.MeshStandardMaterial({ color, roughness: 0.7 }));
+          body.position.y = 0.4; body.castShadow = !this.performanceMode;
+          group.add(body);
+          const head = new THREE.Mesh(new THREE.SphereGeometry(0.25, 8, 6), new THREE.MeshStandardMaterial({ color: 0xffccaa, roughness: 0.6 }));
+          head.position.y = 0.95; head.castShadow = !this.performanceMode;
+          group.add(head);
+          const ring = new THREE.Mesh(
+            new THREE.TorusGeometry(0.32, 0.05, 6, 12),
+            new THREE.MeshStandardMaterial({ color: 0xffff00, emissive: 0xffff00, emissiveIntensity: 0.5 })
+          );
+          ring.position.y = 0.05; ring.rotation.x = Math.PI / 2;
+          group.add(ring);
+          return group;
+        }
+
+        _createMineObject() {
+          const THREE = this.THREE;
+          const group = new THREE.Group();
+          const base = new THREE.Mesh(new THREE.CylinderGeometry(0.35, 0.4, 0.2, 8), new THREE.MeshStandardMaterial({ color: 0x444444, roughness: 0.5 }));
+          base.position.y = 0.1; base.castShadow = !this.performanceMode;
+          group.add(base);
+          const top = new THREE.Mesh(new THREE.SphereGeometry(0.3, 8, 6), new THREE.MeshStandardMaterial({ color: 0xcc3333, roughness: 0.4 }));
+          top.position.y = 0.35; top.castShadow = !this.performanceMode;
+          group.add(top);
+          const light = new THREE.PointLight(0xff0000, 0.3, 2);
+          light.position.y = 0.35;
+          group.add(light);
+          return group;
+        }
+
+        _switchActiveCharacter(index) {
+          this.players.forEach(p => {
+            if (p.mesh) {
+              const ring = p.mesh.children.find(c => c.isMesh && c.material.emissive);
+              if (ring) ring.material.emissiveIntensity = 0;
+            }
+          });
+          const player = this.players.find(p => !p.eliminated);
+          if (player && player.mesh) {
+            this.activeCharacter = player.mesh;
+            const ring = player.mesh.children.find(c => c.isMesh && c.material.emissive);
+            if (ring) ring.material.emissiveIntensity = 0.8;
+            this.cameraTarget.copy(player.mesh.position);
+          } else {
+            this.activeCharacter = null;
+          }
+          this._resetInteractionState();
+          // راه‌اندازی ربات با رفتار طبیعی‌تر
+          if (this.players[this.currentPlayerIndex]?.name?.startsWith('ربات') && !this.players[this.currentPlayerIndex].eliminated) {
+            this._initRobotBehavior();
+          }
+        }
+
+        _initRobotBehavior() {
+          this.robotState = {
+            phase: 'idle',
+            targetMineIndex: null,
+            wanderAngle: 0,
+            wanderTimer: 0,
+            idleTimer: performance.now() + 800 + Math.random() * 1500,
+            hesitationTimer: 0,
+            lookAroundTimer: 0,
+            lookAngle: 0,
+            subPhase: 'none'
+          };
+        }
+
+        _resetInteractionState() {
+          this.interactionState.active = false;
+          this.interactionState.mineIndex = null;
+          this.interactionState.startTime = 0;
+          if (this.countdownSprite) this.countdownSprite.visible = false;
+        }
+
+        _startNewRound() {
+          const active = this.players.filter(p => !p.eliminated);
+          if (active.length === 1) return this._endGame(active[0].name);
+          if (!active.length) return;
+          if (this.players[this.currentPlayerIndex]?.eliminated) this.currentPlayerIndex = this._getNextPlayerIndex();
+          this.mines = Array.from({ length: active.length + 1 }, (_, i) => ({ id: i, isMine: false, disabled: false }));
+          this.mines[Math.floor(Math.random() * this.mines.length)].isMine = true;
+          this.gamePhase = 'playing';
+          this._spawnMines();
+          this._switchActiveCharacter(this.currentPlayerIndex);
+          this._updateUI();
+        }
+
+        _spawnMines() {
+          this._clearMinesFromScene();
+          if (!this.mines.length) return;
+          const positions = [];
+          const rMin = 2.5, rMax = 7.5;
+          for (let i = 0; i < this.mines.length; i++) {
+            const angle = (i / this.mines.length) * Math.PI * 2 + (Math.random() - 0.5) * 0.5;
+            const r = rMin + Math.random() * (rMax - rMin);
+            positions.push(new this.THREE.Vector3(Math.cos(angle) * r, 0, Math.sin(angle) * r));
+          }
+          this.mineMeshes = [];
+          this.mines.forEach((m, i) => {
+            const obj = this._createMineObject();
+            obj.position.copy(positions[i]);
+            obj.userData.index = i;
+            this.scene.add(obj);
+            this.mineMeshes.push(obj);
+          });
+        }
+
+        _clearMinesFromScene() {
+          this.mineMeshes.forEach(m => this.scene.remove(m));
+          this.mineMeshes = [];
+        }
+
+        _handleMineClick(i) {
+          const m = this.mines[i];
+          if (!m || m.disabled || this.gamePhase !== 'playing') return;
+          m.disabled = true;
+          const mesh = this.mineMeshes[i];
+          mesh.children[1].material.color.set(m.isMine ? 0x880e4f : 0x2e7d32);
+          mesh.children[2].intensity = 0;
+          this._resetInteractionState();
+          if (m.isMine) {
+            const player = this.players[this.currentPlayerIndex];
+            player.eliminated = true;
+            this._showToast(`💥 ${player.name} منفجر شد!`);
+            if (window._sfxExplosion) window._sfxExplosion();
+            if (window._vibrate) window._vibrate();
+            // --- انفجار واقعی بازیکن ---
+            if (player.mesh) {
+              const explosionPos = player.mesh.position.clone();
+              // ایجاد افکت انفجار (دود، آتش، جرقه)
+              const explosion = new ExplosionEffect(this.scene, this.THREE, explosionPos, this.performanceMode);
+              this.activeExplosions.push(explosion);
+              // حذف کامل مدل بازیکن از صحنه
+              this.scene.remove(player.mesh);
+              // پاکسازی کامل مش
+              player.mesh.traverse(child => {
+                if (child.geometry) child.geometry.dispose();
+                if (child.material) {
+                  if (Array.isArray(child.material)) {
+                    child.material.forEach(mat => mat.dispose());
+                  } else {
+                    child.material.dispose();
+                  }
+                }
+              });
+              player.mesh = null;
+            }
+            this.currentPlayerIndex = this._getNextPlayerIndex();
+            this._startNewRound();
+          } else {
+            if (window._sfxDisarm) window._sfxDisarm();
+            const rem = this.mines.filter(m => !m.disabled);
+            if (rem.length === 1 && rem[0].isMine) {
+              this._showToast(`🎉 همه بمب‌های بی‌خطر خنثی شدند!`);
+              this.currentPlayerIndex = this._getNextPlayerIndex();
+              this._startNewRound();
+            } else {
+              this.currentPlayerIndex = this._getNextPlayerIndex();
+              this._switchActiveCharacter(this.currentPlayerIndex);
+            }
+          }
+          this._updateUI();
+        }
+
+        _endGame(winner) {
+          this.gamePhase = 'winner';
+          this._showToast(`🏆 برنده: ${winner}`);
+          if (window._sfxWin) window._sfxWin();
+          if (window.showModal) {
+            window.showModal(`<span class="trophy-emoji">🏆</span><div>برنده: ${winner}</div>`, [
+              { text:'🔄 بازی مجدد', callback:()=>{ window.hideModal(); this.players.forEach(p => p.eliminated = false); this.currentPlayerIndex = 0; this._startNewRound(); } },
+              { text:'🏠 خانه', callback:()=>{ window.hideModal(); this.destroy(); window.resetToHome(); } }
+            ]);
+          } else {
+            this.mines = []; this._clearMinesFromScene(); this._resetInteractionState();
+            setTimeout(() => {
+              if (this.gamePhase === 'winner') {
+                this.players.forEach(p => p.eliminated = false);
+                this.currentPlayerIndex = 0;
+                this._startNewRound();
+              }
+            }, 4000);
+          }
+        }
+
+        _getNextPlayerIndex() {
+          let n = (this.currentPlayerIndex + 1) % this.players.length;
+          while (this.players[n].eliminated && n !== this.currentPlayerIndex) n = (n + 1) % this.players.length;
+          return n;
+        }
+
+        _updateUI() {
+          const bar = document.getElementById('playersBar');
+          if (bar) {
+            bar.innerHTML = '';
+            this.players.forEach((p, i) => {
+              const b = document.createElement('div'); b.className = 'player-badge';
+              if (p.eliminated) { b.classList.add('eliminated'); b.innerHTML = `💀 ${p.name}`; }
+              else { if (i === this.currentPlayerIndex && this.gamePhase === 'playing') b.classList.add('active-turn'); b.innerHTML = (i === this.currentPlayerIndex && this.gamePhase === 'playing' ? '👈 ' : '') + p.name; }
+              bar.appendChild(b);
+            });
+          }
+          document.getElementById('minesCount').textContent = `💣 مین: ${this.mines.filter(m => !m.disabled).length}`;
+          const p = this.players[this.currentPlayerIndex];
+          document.getElementById('turnIndicator').textContent = p && !p.eliminated ? `👈 نوبت: ${p.name}` : '👈 نوبت: ---';
+        }
+
+        _showToast(msg) {
+          const container = document.getElementById('toastContainer');
+          const toast = document.createElement('div'); toast.className = 'toast-item'; toast.textContent = msg;
+          container.appendChild(toast);
+          setTimeout(() => toast.remove(), 3000);
+        }
+
+        _initJoystick() {
+          const container = document.getElementById('joystickContainer');
+          const knob = document.getElementById('joystickKnob');
+          const rect = container.getBoundingClientRect();
+          this.joystickCenter = { x: rect.width / 2, y: rect.height / 2 };
+          knob.style.transform = `translate(${this.joystickCenter.x - 35}px, ${this.joystickCenter.y - 35}px)`;
+          container.addEventListener('touchstart', this._boundJoystickStart, { passive: false });
+          container.addEventListener('touchmove', this._boundJoystickMove, { passive: false });
+          container.addEventListener('touchend', this._boundJoystickEnd);
+          container.addEventListener('touchcancel', this._boundJoystickEnd);
+          container.addEventListener('mousedown', this._boundJoystickStart);
+          window.addEventListener('mousemove', this._boundJoystickMove);
+          window.addEventListener('mouseup', this._boundJoystickEnd);
+        }
+
+        _joystickStart(e) { e.preventDefault(); this.joystickActive = true; this.joystickBaseRect = document.getElementById('joystickContainer').getBoundingClientRect(); }
+        _joystickMove(e) {
+          if (!this.joystickActive) return;
+          e.preventDefault();
+          const touch = e.touches ? e.touches[0] : e;
+          const rect = this.joystickBaseRect;
+          const x = touch.clientX - rect.left - this.joystickCenter.x;
+          const y = touch.clientY - rect.top - this.joystickCenter.y;
+          const dist = Math.sqrt(x * x + y * y);
+          const clampedDist = Math.min(dist, this.knobMaxDist);
+          const angle = Math.atan2(y, x);
+          const knob = document.getElementById('joystickKnob');
+          knob.style.transform = `translate(${Math.cos(angle) * clampedDist + this.joystickCenter.x - 35}px, ${Math.sin(angle) * clampedDist + this.joystickCenter.y - 35}px)`;
+          this.joystickVec.set(clampedDist > 0 ? Math.cos(angle) * (clampedDist / this.knobMaxDist) : 0,
+                               clampedDist > 0 ? -Math.sin(angle) * (clampedDist / this.knobMaxDist) : 0);
+        }
+        _joystickEnd() {
+          this.joystickActive = false;
+          const knob = document.getElementById('joystickKnob');
+          knob.style.transform = `translate(${this.joystickCenter.x - 35}px, ${this.joystickCenter.y - 35}px)`;
+          this.joystickVec.set(0, 0);
+        }
+
+        _onResize() {
+          const container = document.getElementById('threeDCanvasContainer');
+          if (!container || !this.renderer) return;
+          const w = container.clientWidth, h = container.clientHeight;
+          this.camera.aspect = w / h;
+          this.camera.updateProjectionMatrix();
+          this.renderer.setSize(w, h);
+        }
+        _onCanvasClick(event) {}
+
+        // -------------------------------------------------------------------
+        //  حلقه اصلی انیمیشن با بهینه‌سازی‌ها
+        // -------------------------------------------------------------------
+        _animate(now) {
+          this.animationId = requestAnimationFrame(this._boundAnimate);
+          const delta = Math.min((now - this.lastTime) / 1000, 0.1);
+          this.lastTime = now;
+          const THREE = this.THREE;
+
+          // کنترل حرکت بازیکن انسانی
+          if (this.gamePhase === 'playing' && this.activeCharacter && !this.players[this.currentPlayerIndex]?.name?.startsWith('ربات') && this.joystickActive) {
+            const forward = new THREE.Vector3(0, 0, -1).applyQuaternion(this.camera.quaternion);
+            forward.y = 0; forward.normalize();
+            const right = new THREE.Vector3(1, 0, 0).applyQuaternion(this.camera.quaternion);
+            right.y = 0; right.normalize();
+            const dir = forward.clone().multiplyScalar(this.joystickVec.y).add(right.clone().multiplyScalar(this.joystickVec.x));
+            if (dir.length() > 0.01) {
+              dir.normalize();
+              this.activeCharacter.position.x += dir.x * this.MOVE_SPEED * delta;
+              this.activeCharacter.position.z += dir.z * this.MOVE_SPEED * delta;
+              this.activeCharacter.position.x = Math.max(-10, Math.min(10, this.activeCharacter.position.x));
+              this.activeCharacter.position.z = Math.max(-10, Math.min(10, this.activeCharacter.position.z));
+              this.cameraTarget.copy(this.activeCharacter.position);
+              this.activeCharacter.rotation.y = Math.atan2(dir.x, dir.z);
+            }
+          }
+
+          // --- رفتار پیشرفته ربات (طبیعی‌تر و انسان‌گونه) ---
+          if (this.gamePhase === 'playing' && this.players[this.currentPlayerIndex]?.name?.startsWith('ربات') && !this.players[this.currentPlayerIndex].eliminated) {
+            const robotChar = this.players[this.currentPlayerIndex].mesh;
+            if (robotChar && !this.interactionState.active) {
+              const rs = this.robotState;
+              const nowMs = now;
+
+              switch (rs.phase) {
+                case 'idle':
+                  // تردید و مکث کوتاه
+                  if (nowMs > rs.idleTimer) {
+                    const roll = Math.random();
+                    if (roll < 0.4) {
+                      // نگاه به اطراف (look around)
+                      rs.phase = 'looking';
+                      rs.lookAroundTimer = nowMs + 600 + Math.random() * 1200;
+                      rs.lookAngle = (Math.random() - 0.5) * Math.PI;
+                    } else if (roll < 0.75) {
+                      // حرکت به سمت یک بمب
+                      const activeMines = this.mines.map((m, i) => m.disabled ? null : i).filter(i => i !== null);
+                      if (activeMines.length) { rs.targetMineIndex = activeMines[Math.floor(Math.random() * activeMines.length)]; rs.phase = 'approaching'; }
+                      else { rs.phase = 'idle'; rs.idleTimer = nowMs + 1000; }
+                    } else {
+                      // پرسه‌زنی (wandering)
+                      rs.phase = 'wandering';
+                      rs.wanderAngle = Math.random() * Math.PI * 2;
+                      rs.wanderTimer = nowMs + 1500 + Math.random() * 2500;
+                      rs.subPhase = 'moving';
+                    }
+                  }
+                  break;
+
+                case 'looking':
+                  // چرخش به اطراف برای نگاه کردن
+                  if (robotChar) {
+                    robotChar.rotation.y += (rs.lookAngle - robotChar.rotation.y) * 0.05;
+                  }
+                  if (nowMs > rs.lookAroundTimer) {
+                    rs.phase = 'idle';
+                    rs.idleTimer = nowMs + 400 + Math.random() * 1200;
+                  }
+                  break;
+
+                case 'wandering':
+                  if (rs.subPhase === 'moving') {
+                    robotChar.position.x += Math.sin(rs.wanderAngle) * this.MOVE_SPEED * 0.6 * delta;
+                    robotChar.position.z += Math.cos(rs.wanderAngle) * this.MOVE_SPEED * 0.6 * delta;
+                    robotChar.rotation.y += (rs.wanderAngle - robotChar.rotation.y) * 0.08;
+                    if (nowMs > rs.wanderTimer) {
+                      // تغییر مسیر ناگهانی یا مکث
+                      if (Math.random() < 0.5) {
+                        rs.wanderAngle += (Math.random() - 0.5) * Math.PI;
+                        rs.wanderTimer = nowMs + 1000 + Math.random() * 2000;
+                      } else {
+                        rs.phase = 'idle';
+                        rs.idleTimer = nowMs + 500 + Math.random() * 1500;
+                      }
+                    }
+                  }
+                  // محدود کردن موقعیت
+                  robotChar.position.x = Math.max(-10, Math.min(10, robotChar.position.x));
+                  robotChar.position.z = Math.max(-10, Math.min(10, robotChar.position.z));
+                  break;
+
+                case 'approaching':
+                  const targetMine = this.mineMeshes[rs.targetMineIndex];
+                  if (!targetMine || this.mines[rs.targetMineIndex]?.disabled) {
+                    rs.phase = 'idle';
+                    rs.idleTimer = nowMs + 500;
+                  } else {
+                    this._tempDir.subVectors(targetMine.position, robotChar.position);
+                    const dist = this._tempDir.length();
+                    if (dist < this.INTERACT_DIST) {
+                      // رسید به بمب – تردید کوتاه قبل از اقدام
+                      rs.phase = 'hesitating';
+                      rs.hesitationTimer = nowMs + 300 + Math.random() * 800;
+                    } else {
+                      this._tempDir.normalize();
+                      // حرکت غیرخطی با کمی لرزش
+                      const jitter = Math.sin(nowMs * 0.01) * 0.3;
+                      robotChar.position.x += (this._tempDir.x + jitter * 0.1) * this.MOVE_SPEED * delta;
+                      robotChar.position.z += (this._tempDir.z + jitter * 0.1) * this.MOVE_SPEED * delta;
+                      robotChar.rotation.y += (Math.atan2(this._tempDir.x, this._tempDir.z) - robotChar.rotation.y) * 0.1;
+                    }
+                  }
+                  break;
+
+                case 'hesitating':
+                  // تردید قبل از اقدام نهایی
+                  if (nowMs > rs.hesitationTimer) {
+                    // اقدام به کلیک روی بمب
+                    if (rs.targetMineIndex !== null && !this.mines[rs.targetMineIndex]?.disabled) {
+                      this._handleMineClick(rs.targetMineIndex);
+                    }
+                    rs.phase = 'idle';
+                    rs.idleTimer = nowMs + 1000;
+                  }
+                  break;
+
+                default:
+                  rs.phase = 'idle';
+                  rs.idleTimer = nowMs + 1000;
+              }
+            }
+            if (robotChar) this.cameraTarget.copy(robotChar.position);
+          }
+
+          // بررسی برخورد بازیکن با بمب‌ها
+          if (this.gamePhase === 'playing' && this.activeCharacter) {
+            let closestMine = null, minDist = Infinity;
+            for (let i = 0; i < this.mines.length; i++) {
+              if (this.mines[i].disabled) continue;
+              const dist = this.activeCharacter.position.distanceTo(this.mineMeshes[i].position);
+              if (dist < this.INTERACT_DIST && dist < minDist) { minDist = dist; closestMine = i; }
+            }
+            if (closestMine !== null) {
+              if (!this.interactionState.active || this.interactionState.mineIndex !== closestMine) {
+                this.interactionState = { active: true, mineIndex: closestMine, startTime: now };
+              }
+              const elapsed = now - this.interactionState.startTime;
+              this._updateCountdownSprite(this.mineMeshes[closestMine].position, Math.min(elapsed / this.COUNTDOWN_DURATION, 1));
+              if (elapsed >= this.COUNTDOWN_DURATION) this._handleMineClick(closestMine);
+            } else {
+              if (this.interactionState.active) this._resetInteractionState();
+            }
+          }
+
+          // به‌روزرسانی افکت‌های انفجار
+          if (this.activeExplosions.length > 0) {
+            this.activeExplosions = this.activeExplosions.filter(exp => exp.update(delta));
+          }
+
+          // انیمیشن شعله‌های کمپ‌فایر (فقط در شب و اگر Performance Mode خاموش باشد)
+          if (this.theme === 'dark' && this.flames.length && !this.performanceMode) {
+            this.flames.forEach(flame => {
+              flame.position.y = 0.5 + Math.sin(now * 0.01 + flame.userData.offset) * 0.1;
+              flame.material.opacity = 0.6 + Math.sin(now * 0.02 + flame.userData.offset) * 0.3;
+            });
+          }
+
+          // حرکت دوربین
+          if (this.camera && this.cameraTarget) {
+            this.camera.position.lerp(new THREE.Vector3(this.cameraTarget.x, 5, this.cameraTarget.z + 8), 0.05);
+            this.camera.lookAt(this.cameraTarget.x, 1, this.cameraTarget.z);
+          }
+
+          // رندر نهایی
+          if (this.renderer) this.renderer.render(this.scene, this.camera);
+        }
+      }
+
+      window.ThreeDGame = ThreeDGame;
+      window.resetToHome = function() { location.reload(); };
+    })();
+  </script>
+</body>
+  </html>
